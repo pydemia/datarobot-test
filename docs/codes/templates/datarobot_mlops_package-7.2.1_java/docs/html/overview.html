@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Overview &mdash; DataRobot MLOps Agent DEV documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'DEV',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Monitoring Concepts" href="create_deployment.html" />
+    <link rel="prev" title="MLOps Library and Agent Documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> DataRobot MLOps Agent
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                DEV
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#on-datarobot-mlops">On DataRobot MLOps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#in-your-deployment-environment">In your Deployment Environment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="create_deployment.html">Monitoring Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agent.html">Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mlops_lib.html">MLOps Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spooler_configuration.html">Spooler Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment_vars.html">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DataRobot MLOps Agent</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Overview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/overview.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<p>You can find DataRobot’s main documentation within your DataRobot application by browsing to
+<cite>domain-name/docs/</cite> or, from the UI, clicking the book icon on the upper right.
+There you will find an overview of DataRobot’s MLOps agent monitoring agent (<cite>domain-name/docs/deploy/mlops-agent/</cite>),
+its components, and use cases. In addition, the DataRobot documentation contains complete information for using the
+model management tools for monitoring accuracy, data drift, prediction distribution, latency, etc.</p>
+<p>DataRobot’s MLOps agent can be used to monitor and manage external deployments, i.e., those running outside
+of DataRobot’s infrastructure.</p>
+<p>After following the steps and procedures presented here, those deployments and their prediction data will be shown in
+the DataRobot MLOps UI.
+An overview of the monitoring process follows. You can find more details by following the
+<a class="reference internal" href="quickstart.html#quickstart-guide"><span class="std std-ref">Quickstart guide</span></a>.</p>
+<div class="section" id="on-datarobot-mlops">
+<h2>On DataRobot MLOps<a class="headerlink" href="#on-datarobot-mlops" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Use the <strong>Model Registry</strong> to create a model package with information about your model’s metadata.</li>
+<li>Deploy the model package. This will create a <em>deployment</em> that will be used to display
+metrics about the running model.</li>
+<li>Use the deployment <strong>Integrations</strong> tab to view a code snippet demonstrating how to instrument your
+prediction code to report metrics.</li>
+</ol>
+</div>
+<div class="section" id="in-your-deployment-environment">
+<h2>In your Deployment Environment<a class="headerlink" href="#in-your-deployment-environment" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Install the DataRobot MLOps agent.</li>
+<li>Use the MLOps library to report metrics from your prediction code as demonstrated by the snippet.</li>
+<li>The MLOps library buffers the metrics in a <em>spooler</em>,
+which enables high throughput without slowing down the deployment. The type of spooler you use depends on your
+environment. Currently, the spooler could be the local filesystem, RabbitMQ, Amazon SQS, or Google PubSub.</li>
+<li>The MLOps agent forwards the metrics to DataRobot MLOps.</li>
+<li>You can view the reported metrics via the DataRobot MLOps user interface <strong>Deployments</strong> tab.</li>
+</ol>
+<p>You can find more details for each of these steps in the relevant documentation sections.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="create_deployment.html" class="btn btn-neutral float-right" title="Monitoring Concepts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="MLOps Library and Agent Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright © DataRobot, Inc. 2019. All Rights Reserved..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

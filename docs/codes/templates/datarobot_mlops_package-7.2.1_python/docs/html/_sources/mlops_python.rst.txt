@@ -1,0 +1,7 @@
+MLOps Python library ({mlops_python_version})
+=============================================
+
+.. toctree::
+  python_installation
+  python_api
+  python_examples

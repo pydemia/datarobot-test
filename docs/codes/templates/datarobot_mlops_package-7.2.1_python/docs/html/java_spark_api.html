@@ -1,0 +1,393 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>MLOpsSparkUtils &mdash; DataRobot MLOps Agent DEV documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'DEV',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="java_examples.html" />
+    <link rel="prev" title="MLOps" href="java_api.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> DataRobot MLOps Agent
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                DEV
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create_deployment.html">Monitoring Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agent.html">Agent</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="mlops_lib.html">MLOps Library</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mlops_client.html">MLOps Client (7.2.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlops_python.html">MLOps Python library (7.2.1)</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="mlops_java.html">MLOps Java library (7.2.1)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="java_installation.html">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="java_api.html">MLOps</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">MLOpsSparkUtils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="java_examples.html">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spooler_configuration.html">Spooler Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment_vars.html">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DataRobot MLOps Agent</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="mlops_lib.html">MLOps Library</a> &raquo;</li>
+        
+          <li><a href="mlops_java.html">MLOps Java library (7.2.1)</a> &raquo;</li>
+        
+      <li>MLOpsSparkUtils</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/java_spark_api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mlopssparkutils">
+<h1>MLOpsSparkUtils<a class="headerlink" href="#mlopssparkutils" title="Permalink to this headline">¶</a></h1>
+<dl class="type">
+<dt id="com.datarobot.mlops.spark.MLOpsSparkUtils">
+public class <code class="descname">MLOpsSparkUtils</code><a class="headerlink" href="#com.datarobot.mlops.spark.MLOpsSparkUtils" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provide utility functions to perform MLOps monitoring in Spark.</p>
+</dd></dl>
+
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="reportactuals">
+<h3>reportActuals<a class="headerlink" href="#reportactuals" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.spark.MLOpsSparkUtils.reportActuals(Dataset, String, String, String)">
+public static void <code class="descname">reportActuals</code><span class="sig-paren">(</span>Dataset&lt;Row&gt;<em> dataFrame</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> deploymentId</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> modelId</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> channelConfig</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.spark.MLOpsSparkUtils.reportActuals(Dataset, String, String, String)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report actual values for predictions. The DataFrame provided should contain all the needed information about the predictions and the actual result.  The following columns are expected to exist in the DataFrame (order does not matter):</p>
+<ul class="simple">
+<li>“associationId”: (String) a unique identifier used with a predicted row</li>
+<li>“actualValue”: the actual value of a prediction. This should be numeric for regression models and a string label for classification models.</li>
+<li>“wasActedOn”: (Boolean)(Optional) Indicates if the prediction was acted on in a way that could have affected the actual outcome. For example, if a hospital patient is predicted to be readmitted in 30 days, extra procedures or new medication might be given to mitigate this problem, influencing the actual outcome of the prediction.</li>
+<li>“timestamp”: the datetime when actual values were obtained, formatted according to RFC3339.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dataFrame</strong> – the DataFrame containing the actuals as specified above</li>
+<li><strong>deploymentId</strong> – The deployment id these actuals belong to</li>
+<li><strong>modelId</strong> – The model id that used for the predictions</li>
+<li><strong>channelConfig</strong> – MLOps channel configuration string</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="reportpredictions">
+<h3>reportPredictions<a class="headerlink" href="#reportpredictions" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.spark.MLOpsSparkUtils.reportPredictions(Dataset, String, String, String, Double, String[], String)">
+public static void <code class="descname">reportPredictions</code><span class="sig-paren">(</span>Dataset&lt;Row&gt;<em> dataFrame</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> deploymentID</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> modelId</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> channelConfig</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/Double.html" title="java.lang.Double">Double</a><em> scoringTime</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a>[]<em> targetColumnNames</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> assocIdColName</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.spark.MLOpsSparkUtils.reportPredictions(Dataset, String, String, String, Double, String[], String)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report predictions and features given a DataFrame (Dataset of Row). This method performs all the necessary steps to report the predictions and features provided in the DataFrame parameter to DataRobot MLOps. The parameters provided are used to tell this helper function how to connect to MLOps and the structure of the DataFrame.</p>
+<p>This variant of the function gets the target columns as a String[] and accepts association ids.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dataFrame</strong> – The DataFrame to report</li>
+<li><strong>deploymentID</strong> – ID of the deployment this data belongs to in MLOps DataRobot</li>
+<li><strong>modelId</strong> – Model Id used for predictions</li>
+<li><strong>channelConfig</strong> – A string containing the MLOps channel configuration</li>
+<li><strong>scoringTime</strong> – The time it took to perform scoring in milliseconds.</li>
+<li><strong>targetColumnNames</strong> – An array of column names to use for the target of the prediction. If only one item is provided, this is assumed to be a regression prediction. If more than one, it is a classification prediction.</li>
+<li><strong>assocIdColName</strong> – The name of the column containing the association ids for the predictions</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="id1">
+<h3>reportPredictions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.spark.MLOpsSparkUtils.reportPredictions(Dataset, String, String, String, Double, List, String)">
+public static void <code class="descname">reportPredictions</code><span class="sig-paren">(</span>Dataset&lt;Row&gt;<em> dataFrame</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> deploymentID</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> modelId</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> channelConfig</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/Double.html" title="java.lang.Double">Double</a><em> scoringTime</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html" title="java.util.List">List</a>&lt;<a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a>&gt;<em> targetColumnNames</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> assocIdColName</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.spark.MLOpsSparkUtils.reportPredictions(Dataset, String, String, String, Double, List, String)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report predictions and features given a DataFrame (Dataset of Row). This method performs all the necessary steps to report the predictions and features provided in the DataFrame parameter to DataRobot MLOps. The parameters provided are used to tell this helper function how to connect to MLOps and the structure of the DataFrame.</p>
+<p>This variant of the function gets the target columns as a List of String and does not accept association ids.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dataFrame</strong> – The DataFrame to report</li>
+<li><strong>deploymentID</strong> – Id of the deployment this data belongs to in DataRobot MLOps</li>
+<li><strong>modelId</strong> – Model Id used for predictions</li>
+<li><strong>channelConfig</strong> – A string containing MLOps channel configuration</li>
+<li><strong>scoringTime</strong> – Time it took to perform scoring in milliseconds</li>
+<li><strong>targetColumnNames</strong> – An array of column names to use for the target of the prediction. If only one item is provided, this is assumed to be a regression prediction. If more than one, it is a classification prediction.</li>
+<li><strong>assocIdColName</strong> – The name of the column containing the association ids for the predictions</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="id2">
+<h3>reportPredictions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.spark.MLOpsSparkUtils.reportPredictions(Dataset, String, String, String, Double, String[])">
+public static void <code class="descname">reportPredictions</code><span class="sig-paren">(</span>Dataset&lt;Row&gt;<em> dataFrame</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> deploymentID</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> modelId</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> channelConfig</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/Double.html" title="java.lang.Double">Double</a><em> scoringTime</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a>[]<em> targetColumnNames</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.spark.MLOpsSparkUtils.reportPredictions(Dataset, String, String, String, Double, String[])" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report predictions and features given a DataFrame (Dataset of Row). This method performs all the necessary steps to report the predictions and features provided in the DataFrame parameter to DataRobot MLOps. The parameters provided are used to tell this helper function how to connect to MLOps and the structure of the DataFrame.</p>
+<p>This variant of the function gets the target columns as a String[].</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dataFrame</strong> – The DataFrame to report</li>
+<li><strong>deploymentID</strong> – Id of the deployment this data belongs to in DataRobot MLOps</li>
+<li><strong>modelId</strong> – Model Id used for predictions</li>
+<li><strong>channelConfig</strong> – A string containing MLOps channel configuration</li>
+<li><strong>scoringTime</strong> – Time it took to perform scoring in milliseconds</li>
+<li><strong>targetColumnNames</strong> – An array of column names to use for the target of the prediction. If only one item if provided, this is assumed to be a regression prediction. If more than one, it is a classification prediction.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="id3">
+<h3>reportPredictions<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.spark.MLOpsSparkUtils.reportPredictions(Dataset, String, String, String, Double, List)">
+public static void <code class="descname">reportPredictions</code><span class="sig-paren">(</span>Dataset&lt;Row&gt;<em> dataFrame</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> deploymentID</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> modelId</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> channelConfig</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/Double.html" title="java.lang.Double">Double</a><em> scoringTime</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html" title="java.util.List">List</a>&lt;<a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a>&gt;<em> targetColumnNames</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.spark.MLOpsSparkUtils.reportPredictions(Dataset, String, String, String, Double, List)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report predictions and features given a DataFrame (Dataset of Row). This method performs all the necessary steps to report the predictions and features provided in the DataFrame parameter to DataRobot MLOps. The parameters provided are used to tell this helper function how to connect to MLOps and the structure of the DataFrame.</p>
+<p>This variant of the function gets the target columns as a List of String.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dataFrame</strong> – The DataFrame to report</li>
+<li><strong>deploymentID</strong> – Id of the deployment this data belongs to in DataRobot MLOps</li>
+<li><strong>modelId</strong> – Model Id used for predictions</li>
+<li><strong>channelConfig</strong> – A string containing MLOps channel configuration</li>
+<li><strong>scoringTime</strong> – Time it took to perform scoring in milliseconds</li>
+<li><strong>targetColumnNames</strong> – An array of column names to use for the target of the prediction. If only one item if provided, this is assumed to be a regression prediction. If more then one, it is a classification prediction.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="java_examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="java_api.html" class="btn btn-neutral float-left" title="MLOps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright © DataRobot, Inc. 2019. All Rights Reserved..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

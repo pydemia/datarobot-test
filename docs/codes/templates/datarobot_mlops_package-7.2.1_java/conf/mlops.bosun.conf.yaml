@@ -1,0 +1,116 @@
+# This file contains configuration for the Bosun
+# Items marked "Required" must be set. Other settings can use the defaults set below.
+
+# Required. URL to the DataRobot MLOps service.
+mlopsUrl: "https://<MLOPS_HOST>"
+
+# Required. DataRobot API token.
+apiToken: "<MLOPS_API_TOKEN>"
+
+# Whether to run bosun as the workload coordinator. The default value is true.
+isCoordinator: true
+
+# Whether to run bosun as worker. The default value is true.
+isWorker: true
+
+# When true, start a REST serve. This will provide several API endpoints (worker health check enables)
+serverMode: true
+# The port to use for the above REST server
+serverPort: "12345"
+
+# The url where to reach REST server, will be use by external configuration services
+serverAddress: "http://localhost"
+
+# Specify the configuration service. This is 'internal' by default and the
+# workload coordinator and worker are expected to run in the same JVM.
+# When run in high availability mode, the configuration needs to be provided by
+# a service such as Consul.
+configurationService:
+  tag: "tag"
+  type: "internal"
+  connectionDetail: ""
+
+# Model Connector configuration
+modelConnector:
+  type: "native"
+  # Scratch place to work on default "/tmp"
+  scratchDir: "/tmp"
+  # Config file for private / secret configuration, bosun will not read this file, just
+  # forward the filename in configuration, optional
+  secretsConfigFile: "/tmp/secrets.conf"
+  # Python command that implements model connector.
+  # mcrunner is installed as part the bosun python package. You should either
+  # set your PATH to include the location of mcrunner, or provide the full path.
+  command: "<BOSUN_VENV_PATH>/mcrunner"
+
+# prediction environments this service will monitor
+predictionEnvironments:
+  # This Prediction Environment ID matches the one in DR MLOps service
+  - id: "<MLOPS_PREDICTION_ENV_ID>"
+    type: "ExternalCommand"
+    platform: "os"
+    # Enable monitoring for this plugin, so that the MLOps information
+    # (viz, url and token) can be forwarded to plugin, default: False
+    #
+    enableMonitoring: true
+
+    # Provide the command to run the plugin:
+
+    # You can either fix PATH to point to where bosun-plugin-runner is located, or
+    # you can provide the full path below.
+    # The filesystem plugin used in the example below if one of the built in plugins provided
+    # by the bosun-plugin-runner
+    command: "<BOSUN_VENV_PATH>/bosun-plugin-runner --plugin filesystem --private-config <CONF_PATH>/plugin.filesystem.conf.yaml"
+
+    # The following example will run the docker plugin
+    # (one of the built in plugins provided by bosun-plugin runner)
+    # command: "<BOSUN_VENV_PATH>/bosun-plugin-runner --plugin docker --private-config <CONF_PATH>/plugin.docker.conf.yaml"
+
+    # The following example will run the kubernetes plugin
+    # (one of the built in plugins provided by bosun-plugin runner)
+    # WARNING: this plugin is currently considered ALPHA maturity; please consult your account representative if you
+    # are interested in trying it.
+    # command: "<BOSUN_VENV_PATH>/bosun-plugin-runner --plugin k8s --private-config <CONF_PATH>/plugin.k8s.conf.yaml"
+
+    # If your plugin was installed as a python module (using pip), you can provide the name
+    # of the module that contains the plugin class. For example --plugin sample_plugin.my_plugin
+    # command: "<BOSUN_VENV_PATH>/bosun-plugin-runner --plugin sample_plugin.my_plugin --private-config <CONF_PATH>/my_config.yaml"
+
+    # If your plugin is in a directory, you can provide the name of the plugin as the path to the
+    # file that contains your plugin. For example:  --plugin sample_plugin/my_plugin.py
+    # command: "<BOSUN_VENV_PATH>/bosun-plugin-runner  --plugin sample_plugin/my_plugin.py --private-config <CONF_PATH>/my_config.yaml"
+
+    # Note: you can control the plugin logging via the --log-config option of bosun-plugin-runner
+ 
+# Path to write Bosun stats
+statsPath: "/tmp/bosun-stats.json"
+
+# HTTP client timeout (in milliseconds).
+httpTimeout: 2000
+
+# When true, verify SSL certificates when connecting to DR app. When false, SSL verification will not be
+# performed. It is highly recommended to keep this config variable as true.
+verifySSL: true
+
+# Number of times the agent will retry sending a request to the MLOps service after it receives a failure.
+httpRetry: 3
+
+# Number of active workers to process bosun commands
+numActionWorkers: 2
+
+# Timeout in seconds processing active commands, eg. launch, stop, replaceModel
+actionWorkerTimeoutSec: 300
+
+# Timeout in seconds for requesting status of PE and the deployment
+statusWorkerTimeoutSec: 300
+
+# How often (in seconds) status worker should update DR MLOps about the status of PE and deployments
+statusUpdateIntervalSec: 60
+
+# How often (in seconds) to poll MLOps service for new deployment / PE Actions
+mlopsPollIntervalSec: 60
+
+# Optional: Plugins directory in which all required plugin jars can be found.
+# If you are only using external commands to run plugin actions then there is
+# no need to use this option.
+# pluginsDir: "../plugins/"

@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "datarobot-management-agent.fullname" . }}
+  labels:
+    {{- include "datarobot-management-agent.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "datarobot-management-agent.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/bosun-configmap.yaml") . | sha256sum }}
+      {{- with .Values.bosun.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "datarobot-management-agent.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "datarobot-management-agent.bosunServiceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.bosun.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.bosun.securityContext | nindent 12 }}
+          image: "{{ .Values.bosun.repository }}:{{ .Values.bosun.tag | default .Chart.AppVersion }}"
+          resources:
+            {{- toYaml .Values.bosun.resources | nindent 12 }}
+          env:
+            - name: BOSUN_CONF_LOC
+              value: /etc/bosun/config/bosun.k8s.conf.yaml
+            - name: MLOPS_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.datarobot.apiSecretName }}
+                  key: secret
+          volumeMounts:
+            - mountPath: /etc/bosun/config
+              name: config-volume
+      volumes:
+        - name: config-volume
+          configMap:
+            name: {{ include "datarobot-management-agent.fullname" . }}
+      {{- with .Values.bosun.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.bosun.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.bosun.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

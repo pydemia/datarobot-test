@@ -1,0 +1,375 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Examples &mdash; DataRobot MLOps Agent DEV documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'DEV',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="MLOpsSparkUtils" href="java_spark_api.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> DataRobot MLOps Agent
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                DEV
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create_deployment.html">Monitoring Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agent.html">Agent</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="mlops_lib.html">MLOps Library</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mlops_client.html">MLOps Client (7.2.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlops_python.html">MLOps Python library (7.2.1)</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="mlops_java.html">MLOps Java library (7.2.1)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="java_installation.html">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="java_api.html">MLOps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="java_spark_api.html">MLOpsSparkUtils</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spooler_configuration.html">Spooler Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment_vars.html">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DataRobot MLOps Agent</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="mlops_lib.html">MLOps Library</a> &raquo;</li>
+        
+          <li><a href="mlops_java.html">MLOps Java library (7.2.1)</a> &raquo;</li>
+        
+      <li>Examples</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/java_examples.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<p>The example below shows how you can use the MLOps library to report
+metrics from a Java program.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>
+<span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">datarobot</span><span class="o">.</span><span class="n">mlops</span><span class="o">.</span><span class="n">examples</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">com.datarobot.mlops.MLOps</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">com.datarobot.mlops.common.exceptions.DRCommonException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">com.datarobot.mlops.common.enums.SpoolerType</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Random</span><span class="p">;</span>
+
+<span class="n">public</span> <span class="k">class</span> <span class="nc">RegressionSampleCode</span> <span class="p">{</span>
+    <span class="n">static</span> <span class="n">private</span> <span class="n">Random</span> <span class="n">rand</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">deploymentId</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">modelId</span><span class="p">;</span>
+
+    <span class="n">RegressionSampleCode</span><span class="p">(</span><span class="n">String</span> <span class="n">deploymentId</span><span class="p">,</span> <span class="n">String</span> <span class="n">modelId</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">this</span><span class="o">.</span><span class="n">deploymentId</span> <span class="o">=</span> <span class="n">deploymentId</span><span class="p">;</span>
+        <span class="n">this</span><span class="o">.</span><span class="n">modelId</span> <span class="o">=</span> <span class="n">modelId</span><span class="p">;</span>
+        <span class="n">rand</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Random</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">makeFakeFeatureData</span><span class="p">(</span><span class="nb">int</span> <span class="n">numSamples</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">featureData</span> <span class="o">=</span> <span class="n">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">feature1Values</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+        <span class="o">//</span> <span class="n">feature1</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">double</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numSamples</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">feature1Values</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">rand</span><span class="o">.</span><span class="n">nextDouble</span><span class="p">());</span>
+        <span class="p">}</span>
+        <span class="n">featureData</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;feature1_name&quot;</span><span class="p">,</span> <span class="n">feature1Values</span><span class="p">);</span>
+
+        <span class="o">//</span> <span class="n">feature2</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">string</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">feature2Values</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numSamples</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">feature2Values</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;some_text&quot;</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">featureData</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;feature2_name&quot;</span><span class="p">,</span> <span class="n">feature2Values</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="n">featureData</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">&gt;</span> <span class="n">makeFakeRegressionPredictionsList</span><span class="p">(</span><span class="nb">int</span> <span class="n">numSamples</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">&gt;</span> <span class="n">predictions</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">numSamples</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numSamples</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">predictions</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">rand</span><span class="o">.</span><span class="n">nextDouble</span><span class="p">());</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">predictions</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="o">/**</span>
+     <span class="o">*</span> <span class="n">Sample</span> <span class="n">code</span> <span class="n">demonstrating</span> <span class="n">how</span> <span class="n">to</span> <span class="n">use</span> <span class="n">MLOps</span> <span class="n">library</span> <span class="n">to</span> <span class="n">record</span> <span class="n">metrics</span> <span class="n">on</span> <span class="n">regression</span> <span class="n">predictions</span><span class="o">.</span>
+     <span class="o">*</span> <span class="n">All</span> <span class="n">code</span> <span class="n">specific</span> <span class="n">to</span> <span class="n">MLOps</span> <span class="n">library</span> <span class="n">are</span> <span class="n">commented</span> <span class="k">with</span> <span class="s2">&quot;MLOPS&quot;</span>
+     <span class="o">*/</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">run</span><span class="p">(</span><span class="nb">int</span> <span class="n">numSamples</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="o">//</span> <span class="n">MLOPS</span><span class="p">:</span> <span class="n">declaration</span>
+        <span class="n">MLOps</span> <span class="n">mlops</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+        <span class="k">try</span> <span class="p">{</span>
+
+            <span class="o">//</span> <span class="n">MLOPS</span><span class="p">:</span> <span class="n">initialize</span> <span class="n">mlops</span> <span class="n">instance</span><span class="o">.</span>
+            <span class="o">//</span> <span class="n">If</span> <span class="n">the</span> <span class="n">deployment</span> <span class="n">ID</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">,</span> <span class="n">the</span> <span class="n">environment</span> <span class="n">variable</span> <span class="n">MLOPS_DEPLOYMENT_ID</span> <span class="ow">is</span> <span class="n">used</span><span class="o">.</span>
+            <span class="o">//</span> <span class="n">If</span> <span class="n">the</span> <span class="n">model</span> <span class="n">ID</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">,</span> <span class="n">the</span> <span class="n">environment</span> <span class="n">variable</span> <span class="n">MLOPS_MODEL_ID</span> <span class="ow">is</span> <span class="n">used</span><span class="o">.</span>
+            <span class="o">//</span> <span class="n">If</span> <span class="n">the</span> <span class="n">output</span> <span class="nb">type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">specified</span><span class="p">,</span> <span class="n">the</span> <span class="n">environment</span> <span class="n">variable</span> <span class="n">MLOPS_SPOOLER_TYPE</span> <span class="ow">is</span> <span class="n">used</span><span class="o">.</span>
+            <span class="n">mlops</span> <span class="o">=</span> <span class="n">MLOps</span><span class="o">.</span><span class="n">getInstance</span><span class="p">()</span>
+                    <span class="o">.</span><span class="n">setDeploymentId</span><span class="p">(</span><span class="n">deploymentId</span><span class="p">)</span>
+                    <span class="o">.</span><span class="n">setModelId</span><span class="p">(</span><span class="n">modelId</span><span class="p">)</span>
+                    <span class="o">.</span><span class="n">setStdoutSpooler</span><span class="p">()</span>
+                    <span class="o">.</span><span class="n">init</span><span class="p">();</span>
+
+            <span class="o">//</span> <span class="n">Create</span> <span class="n">a</span> <span class="nb">set</span> <span class="n">of</span> <span class="n">feature</span> <span class="n">values</span> <span class="k">for</span> <span class="n">each</span> <span class="n">sample</span>
+            <span class="o">//</span> <span class="n">For</span> <span class="n">this</span> <span class="n">example</span><span class="p">,</span> <span class="n">we</span> <span class="n">simply</span> <span class="n">generate</span> <span class="n">the</span> <span class="n">feature</span> <span class="n">values</span><span class="o">.</span>
+            <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">featureData</span> <span class="o">=</span> <span class="n">makeFakeFeatureData</span><span class="p">(</span><span class="n">numSamples</span><span class="p">);</span>
+
+            <span class="o">//</span> <span class="n">Call</span> <span class="n">the</span> <span class="n">model</span> <span class="n">to</span> <span class="n">generate</span> <span class="n">predictions</span><span class="o">.</span>
+            <span class="o">//</span> <span class="n">For</span> <span class="n">this</span> <span class="n">example</span><span class="p">,</span> <span class="n">we</span> <span class="n">simply</span> <span class="n">fake</span> <span class="n">the</span> <span class="n">generating</span> <span class="n">a</span> <span class="n">random</span> <span class="n">number</span> <span class="n">of</span> <span class="n">predictions</span><span class="o">.</span>
+            <span class="n">long</span> <span class="n">startTime</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="n">currentTimeMillis</span><span class="p">();</span>
+            <span class="n">List</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">&gt;</span> <span class="n">predictions</span> <span class="o">=</span> <span class="n">makeFakeRegressionPredictionsList</span><span class="p">(</span><span class="n">numSamples</span><span class="p">);</span>
+            <span class="n">long</span> <span class="n">endTime</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="n">currentTimeMillis</span><span class="p">();</span>
+
+            <span class="o">//</span> <span class="n">MLOPS</span><span class="p">:</span> <span class="n">report</span> <span class="n">the</span> <span class="n">feature</span> <span class="n">data</span> <span class="ow">and</span> <span class="n">predictions</span> <span class="n">together</span> <span class="n">to</span> <span class="n">mlops</span>
+            <span class="n">mlops</span><span class="o">.</span><span class="n">reportPredictionsData</span><span class="p">(</span><span class="n">featureData</span><span class="p">,</span> <span class="n">predictions</span><span class="p">);</span>
+
+            <span class="o">//</span> <span class="n">MLOPS</span><span class="p">:</span> <span class="n">report</span> <span class="n">number</span> <span class="n">of</span> <span class="n">samples</span> <span class="ow">and</span> <span class="n">time</span> <span class="n">to</span> <span class="n">produce</span> <span class="n">predictions</span>
+            <span class="n">mlops</span><span class="o">.</span><span class="n">reportDeploymentStats</span><span class="p">(</span><span class="n">numSamples</span><span class="p">,</span> <span class="n">endTime</span> <span class="o">-</span> <span class="n">startTime</span><span class="p">);</span>
+
+
+        <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">DRCommonException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">getMessage</span><span class="p">());</span>
+        <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+            <span class="o">//</span> <span class="n">MLOPS</span><span class="p">:</span> <span class="n">shutdown</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">mlops</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">mlops</span><span class="o">.</span><span class="n">shutdown</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="n">String</span> <span class="n">args</span><span class="p">[])</span> <span class="p">{</span>
+        <span class="nb">int</span> <span class="n">numSamples</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="n">String</span> <span class="n">deploymentId</span> <span class="o">=</span> <span class="s2">&quot;sample_deployment_id&quot;</span><span class="p">;</span>
+        <span class="n">String</span> <span class="n">modelId</span> <span class="o">=</span> <span class="s2">&quot;sample_model_id&quot;</span><span class="p">;</span>
+        <span class="n">RegressionSampleCode</span> <span class="n">regressionExample</span> <span class="o">=</span> <span class="n">new</span> <span class="n">RegressionSampleCode</span><span class="p">(</span><span class="n">deploymentId</span><span class="p">,</span> <span class="n">modelId</span><span class="p">);</span>
+        <span class="n">regressionExample</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">numSamples</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+
+
+</pre></div>
+</div>
+<p>This example is included in the MLOps TAR file. Instructions for running
+it:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span># This sample code shows how to use the MLOps library to report metrics from external models into
+# DataRobot&#39;s model management service.
+
+
+# To run, first set your java home. For example:
+export JAVA_HOME=`/usr/libexec/java_home -v 1.12`
+
+# Then execute the JAR file.
+java -jar target/datarobot-mlops-sample-code-0.1.0.jar
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="java_spark_api.html" class="btn btn-neutral float-left" title="MLOpsSparkUtils" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright © DataRobot, Inc. 2019. All Rights Reserved..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

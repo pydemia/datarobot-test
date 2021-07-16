@@ -1,0 +1,41 @@
+Overview
+========
+
+You can find DataRobot's main documentation within your DataRobot application by browsing to
+`domain-name/docs/` or, from the UI, clicking the book icon on the upper right.
+There you will find an overview of DataRobot's MLOps agent monitoring agent (`domain-name/docs/deploy/mlops-agent/`),
+its components, and use cases. In addition, the DataRobot documentation contains complete information for using the
+model management tools for monitoring accuracy, data drift, prediction distribution, latency, etc.
+
+DataRobot's MLOps agent can be used to monitor and manage external deployments, i.e., those running outside
+of DataRobot's infrastructure.
+
+After following the steps and procedures presented here, those deployments and their prediction data will be shown in
+the DataRobot MLOps UI.
+An overview of the monitoring process follows. You can find more details by following the
+:ref:`Quickstart guide <quickstart-guide>`.
+
+
+On DataRobot MLOps
+******************
+
+#. Use the **Model Registry** to create a model package with information about your model's metadata.
+#. Deploy the model package. This will create a *deployment* that will be used to display
+   metrics about the running model.
+#. Use the deployment **Integrations** tab to view a code snippet demonstrating how to instrument your
+   prediction code to report metrics.
+
+
+In your Deployment Environment
+******************************
+
+#. Install the DataRobot MLOps agent.
+#. Use the MLOps library to report metrics from your prediction code as demonstrated by the snippet.
+#. The MLOps library buffers the metrics in a *spooler*,
+   which enables high throughput without slowing down the deployment. The type of spooler you use depends on your
+   environment. Currently, the spooler could be the local filesystem, RabbitMQ, Amazon SQS, or Google PubSub.
+#. The MLOps agent forwards the metrics to DataRobot MLOps.
+#. You can view the reported metrics via the DataRobot MLOps user interface **Deployments** tab.
+
+You can find more details for each of these steps in the relevant documentation sections.
+

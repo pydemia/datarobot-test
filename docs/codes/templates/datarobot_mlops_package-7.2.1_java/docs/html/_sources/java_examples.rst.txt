@@ -1,0 +1,14 @@
+Examples
+========
+
+The example below shows how you can use the MLOps library to report
+metrics from a Java program.
+
+.. literalinclude:: ../../examples/java/SampleCode/src/main/java/com/datarobot/mlops/examples/RegressionSampleCode.java
+
+This example is included in the MLOps TAR file. Instructions for running
+it:
+
+.. literalinclude:: ../../examples/java/SampleCode/README.md
+
+

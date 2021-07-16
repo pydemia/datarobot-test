@@ -1,0 +1,95 @@
+.. _quickstart-guide:
+
+Quick Start
+===========
+
+Note: DataRobot MLOps agent is part of the DataRobot MLOps product.
+
+Before you start
+----------------
+
+#. Know the URL of DataRobot MLOps; For on-prem installations, this is typically of the form
+   `https://10.0.0.1` or `https://my-server-name`.
+#. Obtain an API token from DataRobot MLOps. You can do this through the UI by going to the **Developer Tools** tab under account settings
+   and finding the **API Keys** section.
+
+
+Set up the deployment environment
+---------------------------------
+
+Agent Hosts
+***********
+
+Perform the following for each machine that will be used to upload data to
+DataRobot MLOps. This setup only needs to be performed once for each deployment environment.
+
+#. Ensure that Java (version 8) is installed.
+#. Download the DataRobot MLOps package TAR file available through the UI under the user icon -> **Developer Tools** -> **External Monitoring Agent**. The TAR file includes the agent and library software, example code, documentation, and associated scripts.
+#. Change directory into the unpacked directory.
+#. Run the agent using the following procedures:
+
+    #. :ref:`Install the agent <agent-instructions>`.
+    #. :ref:`Configure the agent <agent-configuration>`.
+    #. :ref:`Start the agent service <agent-instructions>`.
+
+Prediction Hosts
+****************
+
+On each machine that will be using the MLOps library to report predictions, ensure that appropriate libraries/requirements
+are installed.
+
+*Java*: the Java library is included in the tar file in `lib/datarobot-mlops-<version>.jar`.
+
+*Python*: the Python version of the library is included in the tar file in `lib/datarobot_mlops-*-py2.py3-none-any.whl`. This works
+for both Python2 and Python3. You can install it using `pip install lib/datarobot_mlops-*-py2.py3-none-any.whl`.
+
+
+(Optional) Try the Examples
+---------------------------
+The agent tar file includes several end-to-end examples in various languages.
+
+:doc:`More information on examples <examples>`.
+
+Create a Model Package and Deploy It
+------------------------------------
+
+Before you can begin monitoring, you must create a model package and deploy it.
+A model package stores metadata about your external model: the problem type (e.g., regression),
+the training data used, etc. Once you have a model package, you can deploy it to a prediction environment
+(test environment, production environment, etc.). Monitoring metrics are tracked per deployment. You can create
+and deploy your model package through the UI or through the API.
+
+Through the UI
+**************
+
+You can create a model package through the UI's **Model Registry** page.  Once
+you have a model package, you can deploy it. In the deployment's **Integrations** tab, you can view example code
+as well as the values for the MLOPS_DEPLOYMENT_ID and MLOPS_MODEL_ID that you will need when reporting
+statistics from your deployment.
+
+
+Through the API
+***************
+
+Helper scripts for creating model packages and deployments are available in the `examples` directory.
+Every example has its own script to create the related model package and deployment in
+a `create_deployment.sh` script.
+This script interacts with DataRobot MLOps directly and so must be run on a machine with
+connectivity to it.
+When run, it returns a deployment ID and model ID that you will need to instrument your deployment.
+
+Instrument your deployment
+--------------------------
+
+For each deployment, do the following:
+
+#. Locate the MLOps library and sample code. These are included within the MLOps TAR file distribution.
+#. Configure the deployment ID and model ID in your environment.
+#. Instrument your code with MLOps calls as shown in the sample code provided for your programming language.
+#. To report results to DataRobot MLOps, you must configure the library to use the same channel
+   as is configured in the agent.
+   For testing, you can configure the library to output to stdout though these calls will
+   not be forwarded to the agent or DataRobot MLOps.
+   Configure the library via the :ref:`mlops API <mlops-lib>`.
+#. You can view your deployment in the DataRobot MLOps UI under the **Deployments** tab.
+

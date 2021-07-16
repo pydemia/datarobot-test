@@ -1,0 +1,42 @@
+
+# Do MLOps monitoring or not
+mlopsMonitoring: True
+
+# Docker network to run all containers on
+# This network should be create prior to running
+# bosun and the plugin
+dockerNetwork: "bosun"
+
+# Traefik image to use
+traefikImage: "traefik:2.3.3"
+
+# The addreess that will be reported to DataRobot 
+outfacingPredictionURLPrefix: "http://10.10.12.22:81"
+
+# MLOps Agent image to use for monitoring
+agentImage: "datarobot/mlops-tracking-agent:latest"
+
+# RabbitMQ image to use for building a channel 
+rabbitmqImage: "rabbitmq:3-management"
+
+# PPS base image
+ppsBaseImage: "datarobot-portable-prediction-api:latest"
+
+# Custom Model base image
+cmBaseImage: "drum-pred-server:latest"
+
+# Generated images will be prefixed with the prefix below
+generatedImagePrefix: "mlops_"
+
+# Running containers will have the prefix below in their name
+containerNamePrefix: "mlops_"
+
+# Mapping of traefik proxy ports (not mandatory)
+traefikPortMapping:
+    80: 81
+    8080: 8081
+
+# Mapping of RabbitMQ (not mandatory)
+rabbitmqPortMapping:
+    15672: 15673
+    5672: 5673

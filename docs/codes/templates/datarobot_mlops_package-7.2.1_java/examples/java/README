@@ -1,0 +1,10 @@
+For general information about the examples, see ../README
+
+If you are using mvn, install the datarobot-mlops jar into
+your local mvn repository before testing the examples by running:
+install_jar_into_maven.sh
+
+Use `make` to create the needed java jar files.
+
+Set your JAVA_HOME environment variable, for example:
+export JAVA_HOME=`/usr/libexec/java_home -v 11`

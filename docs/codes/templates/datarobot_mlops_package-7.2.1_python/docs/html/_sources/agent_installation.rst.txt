@@ -1,0 +1,4 @@
+
+.. _agent-instructions:
+
+.. mdinclude:: ../../build/mlops-agent-tarball/README.md

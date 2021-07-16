@@ -1,0 +1,8 @@
+MLOps Java library ({mlops_java_version})
+=========================================
+
+.. toctree::
+  java_installation
+  java_api
+  java_spark_api
+  java_examples

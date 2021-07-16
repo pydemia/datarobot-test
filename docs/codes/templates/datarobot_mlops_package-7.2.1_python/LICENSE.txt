@@ -1,0 +1,20 @@
+LICENSE
+=======
+
+Subject to the terms and conditions of the Master License Agreement between the parties, Licensor grants Licensee
+a nonexclusive, nontransferable, limited license to download, install, and use these Licensed Materials ("License")
+solely for use in accordance with their documentation and solely for Licensee's internal business purposes.
+Licensor grants no rights other than those explicitly granted herein. Except as specifically permitted herein,
+Licensee may not, in whole or in part: (a) use or copy the Licensed Materials, (b) distribute copies of the Licensed
+Materials, in whole or in part, to any third party; (c) modify, adapt, translate, reverse engineer, make alterations,
+decompile, disassemble or make derivative works based on the Licensed Materials or otherwise derive source or object
+code from the Licensed Materials or any elements thereof, except as otherwise permitted by law; (d) use, rent, loan,
+sub-license, lease, distribute, sell, resell, or attempt to grant or transfer other rights to the Licensed Materials
+to third parties; or (e) use the Licensed Materials to act as a timesharing, rental, outsourcing, service bureau or
+application service provider, or to permit access to the Licensed Materials by any third party.
+
+THESE LICENSED MATERIALS ARE LICENSED, NOT SOLD. The Licensed Materials, all design elements of the Licensed Materials,
+and all associated trade names, trademarks, service marks or other brand indicia are owned by Licensor and its suppliers.
+All techniques, know-how, software, algorithms and methods or rights in the Licensed Materials or which are employed by
+Licensor in connection with the Licensed Materials, shall be and remain the property of Licensor.
+ALL RIGHTS IN THE LICENSED MATERIALS NOT EXPRESSLY GRANTED HEREIN ARE RESERVED TO LICENSOR.

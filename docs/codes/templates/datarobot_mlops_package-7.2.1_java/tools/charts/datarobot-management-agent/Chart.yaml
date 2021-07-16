@@ -1,0 +1,11 @@
+apiVersion: v2
+name: datarobot-management-agent
+description: A Helm chart that runs a single instance of Bosun and configures the built-in k8s plugin
+  to treat the Namespace that Bosun is running in as a Prediction Envrionment that it can deploy
+  models into.
+
+type: application
+
+version: 0.2.0
+
+appVersion: "7.2.1"

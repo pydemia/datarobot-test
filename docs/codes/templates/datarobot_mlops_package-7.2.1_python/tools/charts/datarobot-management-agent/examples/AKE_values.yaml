@@ -1,0 +1,42 @@
+# Example config overlay for Azure. You can copy and update it for your
+# environment and then use the `--values <filename>` to overlay them with
+# the default values.
+#
+# This example assumes you will be using pull-secrets to authenticate with your
+# ACR registry. Follow this guide:
+#   https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-kubernetes
+#
+# IMPORTANT: from the above guide, make sure you use `--role acrpush` instead of what
+# is documented. For extra security, you can create two service principals (one for
+# pull and one for push and only provide the push secret to the imageBuilder).
+# The example assumes that the Kubernetes Secret you create will be named
+# `registry-credentials`
+
+datarobot:
+  # You must create this secret via:
+  #   kubectl -n <NAMESPACE> create secret generic mlops-api-key --from-literal=secret=<YOUR-API-TOKEN>
+  apiSecretName: mlops-api-key
+  predictionEnvId: <PREDICTION-ENV-ID>
+  url: https://app.datarobot.com
+
+bosun:
+  repository: <REGISTRY-NAME>.azurecr.io/datarobot/mlops-management-agent
+
+tracking:
+  enabled: true
+  image: <REGISTRY-NAME>.azurecr.io/datarobot/mlops-tracking-agent:latest
+
+imageBuilder:
+  ppsImage: <REGISTRY-NAME>.azurecr.io/datarobot/datarobot-portable-prediction-api:7.1.0-r2426
+  generatedImageRepository: <REGISTRY-NAME>.azurecr.io/mlops/frozen-models
+
+  # This is the secret that you created from the steps above.
+  secretName: registry-credentials
+
+ingress:
+  outfacingURLPrefix: http://<EXTERNAL-IP>/deployments/
+  className: mlops
+
+imagePullSecrets:
+  - name: registry-credentials
+

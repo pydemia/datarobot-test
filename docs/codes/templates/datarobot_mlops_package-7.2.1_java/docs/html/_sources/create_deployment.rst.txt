@@ -1,0 +1,36 @@
+Monitoring Concepts
+===================
+
+Model Packages
+--------------
+
+A *model package* contains metadata about your model. This includes information about the model's target
+type (e.g., Regression, Classification) and the target name. If it's a classification model, the class
+names and for Binary Classification problems, the prediction threshold.
+If you include the model's training data, you may enable feature drift tracking for the model.
+
+Model packages can be created via the UI from the Model Registry page.
+
+Deployments
+-----------
+
+In DataRobot, a *deployment* refers to a machine learning model "deployed" into an environment where
+it can serve predictions. An *external deployment* is one that runs outside of DataRobot MLOps infrastructure.
+
+To use DataRobot MLOps to monitor your external deployments, you must first create a deployment
+in DataRobot by deploying an external model package.
+This can be done through the **Model Registry** by selecting a model package,
+then selecting the **Deployments** sub-tab, and *Create new deployment*.
+
+The **Deployments** tab in the UI will display all reported statistics associated with this deployment.
+In order to report statistics, you need to instrument your predictions code with the MLOps library.
+Once you have created the deployment, the UI will show you integration sample code that demonstrates
+how to do this.
+
+Prediction Environments
+-----------------------
+
+Prediction environments describe where a deployed model runs and includes information about what types of
+models that environment supports and who has permissions to deploy there.
+For example, one prediction environment might be a test cluster that anyone can deploy to but
+that supports only Scoring Code type models.

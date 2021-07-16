@@ -1,0 +1,12 @@
+{
+    "name": "MLOps Example Lending club CodeGen regression model",
+    "modelId": "5d4872f6962d7473b5a4d96b",
+    "modelDescription": {
+        "modelName": "External lending regression model",
+        "description": "Regression on lending club dataset"
+    },
+    "target": {
+        "type": "Regression",
+        "name": "loan_amnt"
+    }
+}

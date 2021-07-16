@@ -1,0 +1,40 @@
+Spooler Configuration
+=====================
+
+The MLOps library communicates to the agent through the spooler, so it is important that the library and agent spooler
+configurations match.
+
+Agent Spooler Configuration
+---------------------------
+
+When running the agent as a separate service (the most common case), specify the spooler configuration in the agent
+configuration file by uncommenting and filling out the *channelConfigs* section.
+
+When running the agent through the MLOps library (see the Single Command Use Case above), the agent is configured
+through the MLOps library. Currently, this case only supports the filesystem spooler.
+
+MLOps Library Spooler Configuration
+-----------------------------------
+
+The MLOps library can be configured programmatically or through environment variables. To configure the spooler
+programmatically, specify the spooler during the MLOps *init* call. For example, to configure the filesystem spooler
+using the Python library:
+
+.. code-block:: python
+
+    mlops = MLOps().set_filesystem_spooler(your_spooler_directory).init()
+
+
+Equivalent interfaces exist for other spooler types. See the :ref:`MLOps API <mlops-lib>` documentation for the
+complete list.
+
+To configure the library via environment variables, see :ref:`environment variables <env-vars>`.
+
+Spooler Credentials
+-------------------
+
+When using some spoolers, appropriate credentials must be provided. For example, when using *PUBSUB*, the environment
+variable *GOOGLE_APPLICATION_CREDENTIALS* must be set appropriately. Likewise, when using Amazon's *SQS* as a spooler,
+you must set the environment variables *AWS_ACCESS_KEY_ID*, *AWS_SECRET_ACCESS_KEY*, and *AWS_REGION* or
+*AWS_DEFAULT_REGION*.
+These credentials are used by those vendors' software packages only and not accessed by MLOps software.

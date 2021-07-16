@@ -1,0 +1,9 @@
+Examples
+========
+
+The example below shows how you can use the MLOps library to report
+metrics from a Python program.
+
+.. literalinclude:: ../../examples/python/SampleCode/regression_sample_code.py
+
+The examples/python directory contains other examples and scripts for running them.

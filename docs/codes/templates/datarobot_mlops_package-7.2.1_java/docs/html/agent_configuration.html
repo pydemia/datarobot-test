@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Agent configuration &mdash; DataRobot MLOps Agent DEV documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'DEV',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="MLOps Library" href="mlops_lib.html" />
+    <link rel="prev" title="MLOps agent installation and usage" href="agent_installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> DataRobot MLOps Agent
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                DEV
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create_deployment.html">Monitoring Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="agent.html">Agent</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="agent_installation.html">MLOps agent installation and usage</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Agent configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mlops_lib.html">MLOps Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spooler_configuration.html">Spooler Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment_vars.html">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DataRobot MLOps Agent</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="agent.html">Agent</a> &raquo;</li>
+        
+      <li>Agent configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/agent_configuration.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="agent-configuration">
+<h1>Agent configuration<a class="headerlink" href="#agent-configuration" title="Permalink to this headline">¶</a></h1>
+<p>Edit the agent configuration file, <cite>conf/mlops.agent.conf.yaml</cite>.
+You must update the values for <cite>mlopsUrl</cite> and <cite>apiToken</cite>.</p>
+<p>By default, the agent will use the file system channel.
+If you use the file system channel, make sure you create the spooler directory (by default this is <cite>/tmp/ta</cite>).
+If you want to use a different channel, update the agent configuration file following the comments in the file.</p>
+<div class="highlight-default" id="id1"><div class="highlight"><pre><span></span><span class="c1"># This file contains configuration for the MLOps agent</span>
+
+<span class="c1"># URL to the DataRobot MLOps service</span>
+<span class="n">mlopsUrl</span><span class="p">:</span> <span class="s2">&quot;https://&lt;MLOPS_HOST&gt;&quot;</span>
+
+<span class="c1"># DataRobot API token</span>
+<span class="n">apiToken</span><span class="p">:</span> <span class="s2">&quot;&lt;MLOPS_API_TOKEN&gt;&quot;</span>
+
+<span class="c1"># Execute the agent once, then exit</span>
+<span class="n">runOnce</span><span class="p">:</span> <span class="n">false</span>
+
+<span class="c1"># When dryrun mode is true, do not report the metrics to MLOps service</span>
+<span class="n">dryRun</span><span class="p">:</span> <span class="n">false</span>
+
+<span class="c1"># When verifySSL is true, SSL certification validation will be performed when</span>
+<span class="c1"># connecting to MLOps DataRobot. When verifySSL is false, these checks are skipped.</span>
+<span class="c1"># Note: It is highly recommended to keep this config variable as true.</span>
+<span class="n">verifySSL</span><span class="p">:</span> <span class="n">true</span>
+
+<span class="c1"># Path to the agent&#39;s log file</span>
+<span class="n">logPath</span><span class="p">:</span> <span class="s2">&quot;./logs/mlops.agent.log&quot;</span>
+
+<span class="c1"># Path to write agent stats</span>
+<span class="n">statsPath</span><span class="p">:</span> <span class="s2">&quot;/tmp/tracking-agent-stats.json&quot;</span>
+
+<span class="c1"># Number of times the agent will retry sending a request to the MLOps service on failure.</span>
+<span class="n">httpRetry</span><span class="p">:</span> <span class="mi">1</span>
+
+<span class="c1"># Http client timeout in milliseconds (30sec timeout)</span>
+<span class="n">httpTimeout</span><span class="p">:</span> <span class="mi">30000</span>
+
+<span class="c1"># Number of concurrent http request, default=1 -&gt; synchronous mode; &gt; 1 -&gt; asynchronous</span>
+<span class="n">httpConcurrentRequest</span><span class="p">:</span> <span class="mi">1</span>
+
+<span class="c1"># Comment out and configure the lines below for the spooler type(s) you are using.</span>
+<span class="c1"># Note: the spooler configuration must match that used by the MLOps library.</span>
+<span class="c1"># Note: Spoolers must be set up before using them.</span>
+<span class="c1">#       - For the filesystem spooler, create the directory that will be used.</span>
+<span class="c1">#       - For the SQS spooler, create the queue.</span>
+<span class="c1">#       - For the PubSub spooler, create the project and topic.</span>
+<span class="c1">#       - For the Kafka spooler, create the topic.</span>
+<span class="n">channelConfigs</span><span class="p">:</span>
+  <span class="o">-</span> <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;FS_SPOOL&quot;</span>
+    <span class="n">details</span><span class="p">:</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="s2">&quot;filesystem&quot;</span><span class="p">,</span> <span class="n">directory</span><span class="p">:</span> <span class="s2">&quot;/tmp/ta&quot;</span><span class="p">}</span>
+<span class="c1">#  - type: &quot;SQS_SPOOL&quot;</span>
+<span class="c1">#    details: {name: &quot;sqs&quot;, queueUrl: &quot;your SQS queue URL&quot;, queueName: &quot;&lt;your AWS SQS queue name&gt;&quot;}</span>
+<span class="c1">#  - type: &quot;RABBITMQ_SPOOL&quot;</span>
+<span class="c1">#    details: {name: &quot;rabbit&quot;, queueName: &lt;your rabbitmq queue name&gt;, queueUrl: &quot;amqp://&lt;ip address&gt;&quot;}</span>
+<span class="c1">#  - type: &quot;PUBSUB_SPOOL&quot;</span>
+<span class="c1">#    details: {name: &quot;pubsub&quot;, projectId: &lt;your project ID&gt;, topicName: &lt;your topic name&gt;}</span>
+<span class="c1">#  - type: &quot;KAFKA_SPOOL&quot;</span>
+<span class="c1">#    details: {name: &quot;kafka&quot;, topicName: &quot;&lt;your topic name&gt;&quot;, bootstrapServers: &quot;&lt;ip address 1&gt;,&lt;ip address 2&gt;,...&quot;}</span>
+
+<span class="c1"># The number of threads that the agent will launch to process data records.</span>
+<span class="n">agentThreadPoolSize</span><span class="p">:</span> <span class="mi">4</span>
+
+<span class="c1"># The maximum number of records each thread will process per fetchNewDataFreq interval.</span>
+<span class="n">agentMaxRecordsTask</span><span class="p">:</span> <span class="mi">100</span>
+
+<span class="c1"># Maximum number of records to aggregate before sending to MMM</span>
+<span class="n">agentMaxAggregatedRecords</span><span class="p">:</span> <span class="mi">500</span>
+
+<span class="c1"># A timeout for pending records before aggregating and submitting</span>
+<span class="n">agentPendingRecordsTimeoutMs</span><span class="p">:</span> <span class="mi">2500</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="mlops_lib.html" class="btn btn-neutral float-right" title="MLOps Library" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="agent_installation.html" class="btn btn-neutral float-left" title="MLOps agent installation and usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright © DataRobot, Inc. 2019. All Rights Reserved..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

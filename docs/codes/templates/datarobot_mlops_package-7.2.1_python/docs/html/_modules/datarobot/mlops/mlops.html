@@ -1,0 +1,622 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>datarobot.mlops.mlops &mdash; DataRobot MLOps Agent DEV documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'DEV',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DataRobot MLOps Agent
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                DEV
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../create_deployment.html">Monitoring Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../agent.html">Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mlops_lib.html">MLOps Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../spooler_configuration.html">Spooler Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../environment_vars.html">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DataRobot MLOps Agent</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>datarobot.mlops.mlops</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for datarobot.mlops.mlops</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">mlops library for reporting statistics.</span>
+
+<span class="sd">MLOps library can be used to report ML metrics to DataRobot MLOps for centralized monitoring.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">datarobot.mlops.common.exception</span> <span class="kn">import</span> <span class="n">DRAlreadyInitialized</span><span class="p">,</span> <span class="n">DRApiException</span>
+<span class="kn">from</span> <span class="nn">datarobot.mlops.common</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="kn">from</span> <span class="nn">datarobot.mlops.common.config</span> <span class="kn">import</span> <span class="n">ConfigConstants</span>
+<span class="kn">from</span> <span class="nn">datarobot.mlops.model</span> <span class="kn">import</span> <span class="n">Model</span>
+<span class="kn">from</span> <span class="nn">datarobot.mlops.common.enums</span> <span class="kn">import</span> <span class="n">SpoolerType</span>
+<span class="kn">from</span> <span class="nn">datarobot.mlops.event</span> <span class="kn">import</span> <span class="n">Event</span>
+<span class="kn">from</span> <span class="nn">datarobot.mlops.agent</span> <span class="kn">import</span> <span class="n">Agent</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+
+<span class="kn">import</span> <span class="nn">atexit</span>
+
+
+<span class="k">class</span> <span class="nc">MLOpsLibMode</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">EMBEDED_AGENT_MODE</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">DEAMON_AGENT_MODE</span> <span class="o">=</span> <span class="mi">2</span>
+
+
+<div class="viewcode-block" id="MLOps"><a class="viewcode-back" href="../../../python_api.html#datarobot.mlops.mlops.MLOps">[docs]</a><span class="k">class</span> <span class="nc">MLOps</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initialized</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_libmode</span> <span class="o">=</span> <span class="n">MLOpsLibMode</span><span class="o">.</span><span class="n">DEAMON_AGENT_MODE</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_agent</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_default_deployment_id</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_default_model_id</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="MLOps.set_deployment_id"><a class="viewcode-back" href="../../../python_api.html#datarobot.mlops.mlops.MLOps.set_deployment_id">[docs]</a>    <span class="k">def</span> <span class="nf">set_deployment_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deployment_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the deployment ID of the deployment for which the reporting will be targeted.</span>
+
+<span class="sd">        :param deployment_id: the unique deployment ID.</span>
+<span class="sd">        :type deployment_id: str</span>
+<span class="sd">        :returns: the MLOps instance</span>
+<span class="sd">        :rtype: MLOps</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_validate_input_string</span><span class="p">(</span><span class="n">deployment_id</span><span class="p">,</span> <span class="s2">&quot;deployment_id&quot;</span><span class="p">)</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">set_config_safely</span><span class="p">(</span><span class="n">ConfigConstants</span><span class="o">.</span><span class="n">DEPLOYMENT_ID</span><span class="p">,</span> <span class="n">deployment_id</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="MLOps.set_model_id"><a class="viewcode-back" href="../../../python_api.html#datarobot.mlops.mlops.MLOps.set_model_id">[docs]</a>    <span class="k">def</span> <span class="nf">set_model_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The model ID for which the reporting information is related.</span>
+
+<span class="sd">        :param model_id: a unique model ID that identifies the given model.</span>
+<span class="sd">        :type model_id: str</span>
+<span class="sd">        :returns: the MLOps instance.</span>
+<span class="sd">        :rtype: MLOps</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_validate_input_string</span><span class="p">(</span><span class="n">model_id</span><span class="p">,</span> <span class="s2">&quot;model_id&quot;</span><span class="p">)</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">set_config_safely</span><span class="p">(</span><span class="n">ConfigConstants</span><span class="o">.</span><span class="n">MODEL_ID</span><span class="p">,</span> <span class="n">model_id</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="MLOps.set_async_reporting"><a class="viewcode-back" href="../../../python_api.html#datarobot.mlops.mlops.MLOps.set_async_reporting">[docs]</a>    <span class="k">def</span> <span class="nf">set_async_reporting</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">async_reporting</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set mode of reporting metrics. Asynchronous mode buffers metrics in memory</span>
+<span class="sd">        while separate process send them (enqueue) to the spooler.</span>
+<span class="sd">        default mode is asynchronous</span>
+<span class="sd">        :param async_reporting: whether to report asynchronously or not</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">set_config_safely</span><span class="p">(</span><span class="n">ConfigConstants</span><span class="o">.</span><span class="n">ASYNC_REPORTING</span><span class="p">,</span> <span class="n">async_reporting</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+    <span class="k">def</span> <span class="nf">set_no_spooler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set no spooler. This disables MLOps reporting.</span>
+<span class="sd">        :returns: the MLOps instance</span>
+<span class="sd">        :rtype: MLOps</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">set_config_safely</span><span class="p">(</span><span class="n">ConfigConstants</span><span class="o">.</span><span class="n">SPOOLER_TYPE</span><span class="p">,</span> <span class="n">SpoolerType</span><span class="o">.</span><span class="n">NONE</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+<div class="viewcode-block" id="MLOps.set_stdout_spooler"><a class="viewcode-back" href="../../../python_api.html#datarobot.mlops.mlops.MLOps.set_stdout_spooler">[docs]</a>    <span class="k">def</span> <span class="nf">set_stdout_spooler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Use STDOUT in place of a spooler. Any reported metrics will go to stdout instead of</span>
+<span class="sd">        being routed to the agent.</span>
+<span class="sd">        :returns: the MLOps instance</span>
+<span class="sd">        :rtype: MLOps</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">set_config_safely</span><span class="p">(</span><span class="n">ConfigConstants</span><span class="o">.</span><span class="n">SPOOLER_TYPE</span><span class="p">,</span> <span class="n">SpoolerType</span><span class="o">.</span><span class="n">STDOUT</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="MLOps.set_filesystem_spooler"><a class="viewcode-back" href="../../../python_api.html#datarobot.mlops.mlops.MLOps.set_filesystem_spooler">[docs]</a>    <span class="k">def</span> <span class="nf">set_filesystem_spooler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the spooler type to &#39;Filesystem&#39; and set its output to the directory specified.</span>
+
+<span class="sd">        :param directory: local filesystem directory path</span>
+<span class="sd">        :type directory: str</span>
+<span class="sd">        :returns: the MLOps instance</span>
+<span class="sd">        :rtype: MLOps</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_validate_input_string</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;directory&quot;</span><span class="p">)</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">set_config_safely</span><span class="p">(</span><span class="n">ConfigConstants</span><span class="o">.</span><span class="n">SPOOLER_TYPE</span><span class="p">,</span> <span class="n">SpoolerType</span><span class="o">.</span><span class="n">FILESYSTEM</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">set_config_safely</span><span class="p">(</span><span class="n">ConfigConstants</span><span class="o">.</span><span class="n">FILESYSTEM_DIRECTORY</span><span class="p">,</span> <span class="n">directory</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="MLOps.set_pubsub_spooler"><a class="viewcode-back" href="../../../python_api.html#datarobot.mlops.mlops.MLOps.set_pubsub_spooler">[docs]</a>    <span class="k">def</span> <span class="nf">set_pubsub_spooler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_id</span><span class="p">,</span> <span class="n">topic_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the spooler type to PubSub. Note that PubSub only supports Python3.</span>
+
+<span class="sd">        :param project_id: GCP PubSub project id. This should be the full project id path.</span>
+<span class="sd">        :type project_id: str</span>
+<span class="sd">        :param topic_name: GCP PubSub topic name. This should be name of the topic within the</span>
+<span class="sd">          project, not the full topic path that includes the project id.</span>
+<span class="sd">        :type topic_name: str</span>
+<span class="sd">        :return: the MLOps instance</span>
+<span class="sd">        :rtype: MLOps</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_validate_input_string</span><span class="p">(</span><span class="n">project_id</span><span class="p">,</span> <span class="s2">&quot;project_id&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_validate_input_string</span><span class="p">(</span><span class="n">topic_name</span><span class="p">,</span> <span class="s2">&quot;topic_name&quot;</span><span class="p">)</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">set_config_safely</span><span class="p">(</span><span class="n">ConfigConstants</span><span class="o">.</span><span class="n">SPOOLER_TYPE</span><span class="p">,</span> <span class="n">SpoolerType</span><span class="o">.</span><span class="n">PUBSUB</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">set_config_safely</span><span class="p">(</span><span class="n">ConfigConstants</span><span class="o">.</span><span class="n">PUBSUB_PROJECT_ID</span><span class="p">,</span> <span class="n">project_id</span><span class="p">)</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">set_config_safely</span><span class="p">(</span><span class="n">ConfigConstants</span><span class="o">.</span><span class="n">PUBSUB_TOPIC_NAME</span><span class="p">,</span> <span class="n">topic_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="MLOps.set_sqs_spooler"><a class="viewcode-back" href="../../../python_api.html#datarobot.mlops.mlops.MLOps.set_sqs_spooler">[docs]</a>    <span class="k">def</span> <span class="nf">set_sqs_spooler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">queue</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the spooler type to SQS.</span>
+
+<span class="sd">        :param queue: AWS SQS queue name or queue URL. If the parameter begins with &quot;http&quot;, it is</span>
+<span class="sd">          assumed to be the queue URL. Otherwise, it is assumed to be the queue name.</span>
+<span class="sd">        :type queue: str</span>
+<span class="sd">        :return: the MLOps instance</span>
+<span class="sd">        :rtype: MLOps</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_validate_input_string</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="s2">&quot;queue_url&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">queue</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;http&quot;</span><span class="p">):</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">set_config_safely</span><span class="p">(</span><span class="n">ConfigConstants</span><span class="o">.</span><span class="n">SQS_QUEUE_URL</span><span class="p">,</span> <span class="n">queue</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">set_config_safely</span><span class="p">(</span><span class="n">ConfigConstants</span><span class="o">.</span><span class="n">SQS_QUEUE_NAME</span><span class="p">,</span> <span class="n">queue</span><span class="p">)</span>
+
+        <span class="n">config</span><span class="o">.</span><span class="n">set_config_safely</span><span class="p">(</span><span class="n">ConfigConstants</span><span class="o">.</span><span class="n">SPOOLER_TYPE</span><span class="p">,</span> <span class="n">SpoolerType</span><span class="o">.</span><span class="n">SQS</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="MLOps.set_rabbitmq_spooler"><a class="viewcode-back" href="../../../python_api.html#datarobot.mlops.mlops.MLOps.set_rabbitmq_spooler">[docs]</a>    <span class="k">def</span> <span class="nf">set_rabbitmq_spooler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">queue_url</span><span class="p">,</span> <span class="n">queue_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the spooler type to RABBITMQ.</span>
+
+<span class="sd">        :param queue_url: RabbitMQ queue URL</span>
+<span class="sd">        :type queue_url: str</span>
+<span class="sd">        :param queue_name: RabbitMQ queue name</span>
+<span class="sd">        :type queue_name: str</span>
+<span class="sd">        :return: the MLOps instance</span>
+<span class="sd">        :rtype: MLOps</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_validate_input_string</span><span class="p">(</span><span class="n">queue_url</span><span class="p">,</span> <span class="s2">&quot;queue_url&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_validate_input_string</span><span class="p">(</span><span class="n">queue_name</span><span class="p">,</span> <span class="s2">&quot;queue_name&quot;</span><span class="p">)</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">set_config_safely</span><span class="p">(</span><span class="n">ConfigConstants</span><span class="o">.</span><span class="n">SPOOLER_TYPE</span><span class="p">,</span> <span class="n">SpoolerType</span><span class="o">.</span><span class="n">RABBITMQ</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">set_config_safely</span><span class="p">(</span><span class="n">ConfigConstants</span><span class="o">.</span><span class="n">RABBITMQ_QUEUE_URL</span><span class="p">,</span> <span class="n">queue_url</span><span class="p">)</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">set_config_safely</span><span class="p">(</span><span class="n">ConfigConstants</span><span class="o">.</span><span class="n">RABBITMQ_QUEUE_NAME</span><span class="p">,</span> <span class="n">queue_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+    <span class="k">def</span> <span class="nf">set_kafka_spooler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">topic_name</span><span class="p">,</span> <span class="n">bootstrap_servers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the spooler type to KAFKA.</span>
+
+<span class="sd">        :param topic_name: Kafka topic name</span>
+<span class="sd">        :type topic_name: str</span>
+<span class="sd">        :param bootstrap_servers: Optional, &#39;host[:port]&#39; string (or list of &#39;host[:port]&#39; strings)</span>
+<span class="sd">            that the consumer should contact to bootstrap initial cluster metadata.</span>
+<span class="sd">        :type bootstrap_servers: str</span>
+<span class="sd">        :return: the MLOps instance</span>
+<span class="sd">        :rtype: MLOps</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_validate_input_string</span><span class="p">(</span><span class="n">topic_name</span><span class="p">,</span> <span class="s2">&quot;topic_name&quot;</span><span class="p">)</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">set_config_safely</span><span class="p">(</span><span class="n">ConfigConstants</span><span class="o">.</span><span class="n">SPOOLER_TYPE</span><span class="p">,</span> <span class="n">SpoolerType</span><span class="o">.</span><span class="n">KAFKA</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">set_config_safely</span><span class="p">(</span><span class="n">ConfigConstants</span><span class="o">.</span><span class="n">KAFKA_TOPIC_NAME</span><span class="p">,</span> <span class="n">topic_name</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">bootstrap_servers</span><span class="p">:</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">set_config_safely</span><span class="p">(</span>
+                <span class="n">ConfigConstants</span><span class="o">.</span><span class="n">KAFKA_BOOTSTRAP_SERVERS</span><span class="p">,</span> <span class="n">bootstrap_servers</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+
+<div class="viewcode-block" id="MLOps.set_feature_data_rows_in_one_message"><a class="viewcode-back" href="../../../python_api.html#datarobot.mlops.mlops.MLOps.set_feature_data_rows_in_one_message">[docs]</a>    <span class="k">def</span> <span class="nf">set_feature_data_rows_in_one_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rows</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set how many feature data rows will be in one message.</span>
+<span class="sd">        Use for channels which have size limit for each message.</span>
+<span class="sd">        :param rows: how many feature data rows will be in one message</span>
+<span class="sd">        :type rows: int</span>
+<span class="sd">        :return: the MLOps instance</span>
+<span class="sd">        :rtype: MLOps</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_validate_input_positive_num</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="s2">&quot;feature_data_rows_in_one_message&quot;</span><span class="p">)</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">set_config_safely</span><span class="p">(</span><span class="n">ConfigConstants</span><span class="o">.</span><span class="n">FEATURE_DATA_ROWS_IN_ONE_MESSAGE</span><span class="p">,</span> <span class="n">rows</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="MLOps.set_channel_config"><a class="viewcode-back" href="../../../python_api.html#datarobot.mlops.mlops.MLOps.set_channel_config">[docs]</a>    <span class="k">def</span> <span class="nf">set_channel_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel_config</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        List of settings in semicolon separated string</span>
+
+<span class="sd">        :param channel_config: key=value params separated by semicolon</span>
+<span class="sd">        :type channel_config: str</span>
+<span class="sd">        :return: MLOps</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">set_channel_config_from_str</span><span class="p">(</span><span class="n">channel_config</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="MLOps.agent"><a class="viewcode-back" href="../../../python_api.html#datarobot.mlops.mlops.MLOps.agent">[docs]</a>    <span class="k">def</span> <span class="nf">agent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mlops_service_url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mlops_api_token</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">agent_jar_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+              <span class="n">path_prefix</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verify_ssl</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Setup agent in an &quot;embedded&quot; mode, MLOps SDK will transparently manage to configure and run</span>
+<span class="sd">        the agent.  When this mode is enabled, agent service should not be started separately.</span>
+
+<span class="sd">        :param mlops_service_url: Required, URL to the DataRobot MLOps service</span>
+<span class="sd">        :type mlops_service_url: str</span>
+<span class="sd">        :param mlops_api_token: Required, DataRobot MLOps API token</span>
+<span class="sd">        :type mlops_api_token: str</span>
+<span class="sd">        :param agent_jar_path: Optional, default - uses JAR file part of the pip package</span>
+<span class="sd">        :type agent_jar_path: str</span>
+<span class="sd">        :param path_prefix: Optional, Path prefix to use to store spool / logs of agent, default</span>
+<span class="sd">            a temporary directory</span>
+<span class="sd">        :type path_prefix: str</span>
+<span class="sd">        :param verify_ssl: Optional, default - verify SSL certificate, if False then skip ssl</span>
+<span class="sd">                        verification</span>
+<span class="sd">        :type verify_ssl: bool</span>
+<span class="sd">        :returns: the MLOps instance</span>
+<span class="sd">        :rtype: MLOps</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_agent</span> <span class="o">=</span> <span class="n">Agent</span><span class="p">(</span><span class="n">mlops_service_url</span><span class="p">,</span>
+                            <span class="n">mlops_api_token</span><span class="p">,</span>
+                            <span class="n">agent_jar_path</span><span class="p">,</span>
+                            <span class="n">path_prefix</span><span class="p">,</span>
+                            <span class="n">verify_ssl</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_libmode</span> <span class="o">=</span> <span class="n">MLOpsLibMode</span><span class="o">.</span><span class="n">EMBEDED_AGENT_MODE</span>
+
+        <span class="c1"># register call back for cleanup</span>
+        <span class="n">atexit</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cleanup</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="MLOps.init"><a class="viewcode-back" href="../../../python_api.html#datarobot.mlops.mlops.MLOps.init">[docs]</a>    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Finalize the initialization of the MLOps instance. Any reporting can be done only</span>
+<span class="sd">        after calling this method.</span>
+
+<span class="sd">        :raises: DRAlreadyInitialized if MLOps library is already initialized.</span>
+<span class="sd">        :returns: the MLOps instance</span>
+<span class="sd">        :rtype: MLOps</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initialized</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">DRAlreadyInitialized</span><span class="p">(</span><span class="s2">&quot;MLOps library already initialized.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_libmode</span> <span class="ow">is</span> <span class="n">MLOpsLibMode</span><span class="o">.</span><span class="n">EMBEDED_AGENT_MODE</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_agent</span><span class="o">.</span><span class="n">validate_and_init_config</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_agent</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_agent</span><span class="o">.</span><span class="n">connect_to_gateway</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_default_deployment_id</span> <span class="o">=</span> \
+            <span class="n">config</span><span class="o">.</span><span class="n">get_config_default</span><span class="p">(</span><span class="n">ConfigConstants</span><span class="o">.</span><span class="n">DEPLOYMENT_ID</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_default_model_id</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get_config_default</span><span class="p">(</span><span class="n">ConfigConstants</span><span class="o">.</span><span class="n">MODEL_ID</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initialized</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="MLOps.shutdown"><a class="viewcode-back" href="../../../python_api.html#datarobot.mlops.mlops.MLOps.shutdown">[docs]</a>    <span class="k">def</span> <span class="nf">shutdown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout_sec</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Safe MLOps shutdown.</span>
+<span class="sd">        Ensures that all metrics are processed and forwarded to the configured output.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_libmode</span> <span class="o">==</span> <span class="n">MLOpsLibMode</span><span class="o">.</span><span class="n">EMBEDED_AGENT_MODE</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">submitted_stats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">get_stats_counters</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_agent</span><span class="o">.</span><span class="n">wait_for_stats_sent_to_mmm</span><span class="p">(</span><span class="n">submitted_stats</span><span class="p">,</span> <span class="n">timeout_sec</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_agent</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_agent</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="n">config</span><span class="o">.</span><span class="n">clear_config</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">shutdown</span><span class="p">(</span><span class="n">timeout_sec</span><span class="o">=</span><span class="n">timeout_sec</span><span class="p">)</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initialized</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">return</span></div>
+
+    <span class="k">def</span> <span class="nf">_cleanup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_agent</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_validate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initialized</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">DRApiException</span><span class="p">(</span><span class="s2">&quot;MLOps library is not initialized.&quot;</span>
+                                 <span class="s2">&quot;Make sure to call `init()` function.&quot;</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_validate_input_positive_num</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">field_name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">DRApiException</span><span class="p">(</span><span class="n">field_name</span> <span class="o">+</span> <span class="s2">&quot; needs to be a positive number.&quot;</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_validate_input_string</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">field_name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">string</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">DRApiException</span><span class="p">(</span><span class="n">field_name</span> <span class="o">+</span> <span class="s2">&quot; is empty.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_param</span><span class="p">,</span> <span class="n">config_constant</span><span class="p">):</span>
+        <span class="n">_id</span> <span class="o">=</span> <span class="n">id_param</span>
+
+        <span class="k">if</span> <span class="n">_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">config_constant</span> <span class="o">==</span> <span class="n">ConfigConstants</span><span class="o">.</span><span class="n">DEPLOYMENT_ID</span><span class="p">:</span>
+                <span class="n">_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_deployment_id</span>
+            <span class="k">elif</span> <span class="n">config_constant</span> <span class="o">==</span> <span class="n">ConfigConstants</span><span class="o">.</span><span class="n">MODEL_ID</span><span class="p">:</span>
+                <span class="n">_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_model_id</span>
+            <span class="k">if</span> <span class="n">_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">DRApiException</span><span class="p">(</span>
+                    <span class="s2">&quot;Config key &#39;</span><span class="si">{}</span><span class="s2">&#39; not found. Export as an environment variable &quot;</span>
+                    <span class="s2">&quot;or set programmatically.&quot;</span>
+                    <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">config_constant</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">_id</span>
+
+<div class="viewcode-block" id="MLOps.report_deployment_stats"><a class="viewcode-back" href="../../../python_api.html#datarobot.mlops.mlops.MLOps.report_deployment_stats">[docs]</a>    <span class="k">def</span> <span class="nf">report_deployment_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_predictions</span><span class="p">,</span> <span class="n">execution_time_ms</span><span class="p">,</span>
+                                <span class="n">deployment_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">model_id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Report the number of predictions and execution time</span>
+<span class="sd">        to DataRobot MLOps.</span>
+
+<span class="sd">        :param num_predictions: number of predictions.</span>
+<span class="sd">        :type num_predictions: int</span>
+<span class="sd">        :param execution_time_ms: time in milliseconds.</span>
+<span class="sd">        :type execution_time_ms: float</span>
+<span class="sd">        :param deployment_id: the deployment for these metrics</span>
+<span class="sd">        :type deployment_id: str</span>
+<span class="sd">        :param model_id: the model for these metrics</span>
+<span class="sd">        :type model_id: str</span>
+<span class="sd">        :raises: DRApiException if parameters have the wrong type.</span>
+<span class="sd">        :returns: report status - True on success, False otherwise.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_validate</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">num_predictions</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">DRApiException</span><span class="p">(</span><span class="s2">&quot;num_predictions must be an integer.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">execution_time_ms</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">execution_time_ms</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">DRApiException</span><span class="p">(</span><span class="s2">&quot;execution_time_ms must be a float.&quot;</span><span class="p">)</span>
+        <span class="n">_deployment_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_id</span><span class="p">(</span><span class="n">deployment_id</span><span class="p">,</span> <span class="n">ConfigConstants</span><span class="o">.</span><span class="n">DEPLOYMENT_ID</span><span class="p">)</span>
+        <span class="n">_model_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_id</span><span class="p">(</span><span class="n">model_id</span><span class="p">,</span> <span class="n">ConfigConstants</span><span class="o">.</span><span class="n">MODEL_ID</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">report_deployment_stats</span><span class="p">(</span><span class="n">_deployment_id</span><span class="p">,</span> <span class="n">_model_id</span><span class="p">,</span>
+                                                   <span class="n">num_predictions</span><span class="p">,</span> <span class="n">execution_time_ms</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MLOps.report_predictions_data"><a class="viewcode-back" href="../../../python_api.html#datarobot.mlops.mlops.MLOps.report_predictions_data">[docs]</a>    <span class="k">def</span> <span class="nf">report_predictions_data</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">features_df</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">predictions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">association_ids</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">class_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">deployment_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">model_id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Report features and predictions to DataRobot MLOps for tracking and monitoring.</span>
+
+<span class="sd">        :param features_df: Dataframe containing features to track and monitor.  All the features</span>
+<span class="sd">            in the dataframe are reported.  Omit the features from the dataframe that do not need</span>
+<span class="sd">            reporting.</span>
+<span class="sd">        :type features_df: pandas dataframe</span>
+<span class="sd">        :param predictions: List of predictions.  For a Regression deployments, this is 1D list</span>
+<span class="sd">            containing prediction values.  For a Classification deployment, this is a 2D list, in</span>
+<span class="sd">            which the inner list is the list of probabilities for each class type</span>
+<span class="sd">            Regression Predictions: e.g. [1, 2, 4, 3, 2]</span>
+<span class="sd">            Binary Classification: e.g. [[0.2, 0.8], [0.3, 0.7]].</span>
+<span class="sd">        :type predictions: list</span>
+
+<span class="sd">        At least one of `features` or `predictions` should be specified.</span>
+
+<span class="sd">        :param association_ids: an optional list of association IDs corresponding to each</span>
+<span class="sd">            prediction. Used for accuracy calculations.  Association IDs have to be unique for each</span>
+<span class="sd">            prediction to report.  Number of `predictions` should be equal to number of</span>
+<span class="sd">            `association_ids` in the list</span>
+<span class="sd">        :type association_ids: list</span>
+<span class="sd">        :param class_names: names of predicted classes, e.g. [&quot;class1&quot;, &quot;class2&quot;, &quot;class3&quot;].  For a</span>
+<span class="sd">            classification deployment, class names are defined during deployment creation.  This</span>
+<span class="sd">            field allows user to decide its own order for his/her convenience and is associated</span>
+<span class="sd">            correctly by DataRobot MLOps. This argument is ignored for the Regression deployment.</span>
+<span class="sd">        :type class_names: list</span>
+<span class="sd">        :param deployment_id: the deployment for these metrics</span>
+<span class="sd">        :type deployment_id: str</span>
+<span class="sd">        :param model_id: the model for these metrics</span>
+<span class="sd">        :type model_id: str</span>
+<span class="sd">        :returns: report status - True on success, False otherwise.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_validate</span><span class="p">()</span>
+        <span class="n">_deployment_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_id</span><span class="p">(</span><span class="n">deployment_id</span><span class="p">,</span> <span class="n">ConfigConstants</span><span class="o">.</span><span class="n">DEPLOYMENT_ID</span><span class="p">)</span>
+        <span class="n">_model_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_id</span><span class="p">(</span><span class="n">model_id</span><span class="p">,</span> <span class="n">ConfigConstants</span><span class="o">.</span><span class="n">MODEL_ID</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">report_predictions_data</span><span class="p">(</span><span class="n">_deployment_id</span><span class="p">,</span> <span class="n">_model_id</span><span class="p">,</span>
+                                                   <span class="n">features_df</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span>
+                                                   <span class="n">association_ids</span><span class="p">,</span> <span class="n">class_names</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">report_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">deployment_id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># type: (Event) -&gt; None</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Report an external event to DataRobot MLOps.</span>
+
+<span class="sd">        :param event: an Event object specifying type, message, and other attributes</span>
+<span class="sd">        :type: event: Event</span>
+<span class="sd">        :param deployment_id: the deployment for these metrics</span>
+<span class="sd">        :type deployment_id: str</span>
+<span class="sd">        :returns status of submission to queue - True on success, False otherwise.</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_validate</span><span class="p">()</span>
+        <span class="n">_deployment_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_id</span><span class="p">(</span><span class="n">deployment_id</span><span class="p">,</span> <span class="n">ConfigConstants</span><span class="o">.</span><span class="n">DEPLOYMENT_ID</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">report_event</span><span class="p">(</span><span class="n">_deployment_id</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">event</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright © DataRobot, Inc. 2019. All Rights Reserved..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+# The directory that will be used as the top dir to 
+# storing all models
+baseDir: "."
+
+# Each deployment directory will be prefixed with the following
+# preefix.
+deploymentDirPrefix: "deployment_"
+
+# The name of the deployment info file to create inside
+# the deployment directory
+deploymentInfoFile: "config.yaml"
+
+# If defined, report back the prediction URL for this deployment
+# the prefix below will be used to the url. Deployment id will be added
+# and the /predic.
+deploymentPredictionBaseUrl: "http://localhost:8080"
+
+# If defined, create a yaml file with the kv of the deployment.
+# If the name of the file is the same of the deploymentInfoFile
+# then the key values are added to the same file as the other
+# config.
+# deploymentKVFile: "kv.yaml"

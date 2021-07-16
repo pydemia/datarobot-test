@@ -1,0 +1,37 @@
+# Example config overlay for AWS. You can copy and update it for your
+# environment and then use the `--values <filename>` to overlay them with
+# the default values.
+
+datarobot:
+  # You must create this secret via:
+  #   kubectl -n <NAMESPACE> create secret generic mlops-api-key --from-literal=secret=<YOUR-API-TOKEN>
+  apiSecretName: mlops-api-key
+  predictionEnvId: <PREDICTION-ENV-ID>
+  url: https://app.datarobot.com
+
+bosun:
+  repository: <AWS-ACCOUNT-ID>.dkr.ecr.us-east-1.amazonaws.com/datarobot/mlops-management-agent
+
+tracking:
+  enabled: true
+  image: <AWS-ACCOUNT-ID>.dkr.ecr.us-east-1.amazonaws.com/datarobot/mlops-tracking-agent:latest
+
+imageBuilder:
+  ppsImage: <AWS-ACCOUNT-ID>.dkr.ecr.us-east-1.amazonaws.com/datarobot/datarobot-portable-prediction-api:7.1.0-r436
+  generatedImageRepository: <AWS-ACCOUNT-ID>.dkr.ecr.us-east-1.amazonaws.com/mlops/frozen-models
+  configMap: "docker-config"
+
+  # The most secure and easiest way to give the image-builder service push permission to ECR, is
+  # to have eksctl create a ServiceAccount with attached IAM role:
+  #   eksctl create iamserviceaccount --approve \
+  #     --cluster <YOUR-CLUSTER-NAME> \
+  #     --namespace <NAMESPACE> \
+  #     --name datarobot-management-agent-image-builder \
+  #     --attach-policy-arn arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPowerUser
+  serviceAccount:
+    create: false
+    name: datarobot-management-agent-image-builder
+
+ingress:
+  outfacingURLPrefix: http://<EXTERNAL-ELB>/deployments/
+  className: mlops

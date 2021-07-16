@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "datarobot-management-agent.fullname" . }}
+  labels:
+    {{- include "datarobot-management-agent.labels" . | nindent 4 }}
+data:
+  bosun.k8s.conf.yaml: |-
+    mlopsUrl: {{ required "A valid .Values.datarobot.url entry required!" .Values.datarobot.url }}
+    predictionEnvironments:
+      - id: {{ required "A valid .Values.datarobot.predictionEnvId entry required!" .Values.datarobot.predictionEnvId }}
+        type: "ExternalCommand"
+        platform: "os"
+        command: "bosun-plugin-runner --plugin k8s --private-config /etc/bosun/config/plugin.k8s.conf.yaml"
+        enableMonitoring: {{ .Values.tracking.enabled }}
+    
+    isCoordinator: true
+    isWorker: true
+    configurationService:
+      tag: "tag"
+      type: "internal"
+      connectionDetail: ""
+    
+    modelConnector:
+      type: "native"
+      scratchDir: "/tmp"
+      secretsConfigFile: "/tmp/secrets.conf"
+      command: "mcrunner"
+    
+    statsPath: "/tmp/bosun-stats.json"
+    httpTimeout: 2000
+    verifySSL: true
+    httpRetry: 3
+    numActionWorkers: 2
+    actionWorkerTimeoutSec: 900
+    statusWorkerTimeoutSec: 30
+    statusUpdateIntervalSec: 60
+    mlopsPollIntervalSec: 60
+
+
+  plugin.k8s.conf.yaml: |-
+    {{ if .Values.tracking.enabled -}}
+    agentImage: {{ required "A valid .Values.tracking.image entry required when tracking is enabled!" .Values.tracking.image }}
+    {{- end }}
+
+    outfacingPredictionURLPrefix: {{ required "A valid .Values.ingress.outfacingURLPrefix entry required!" .Values.ingress.outfacingURLPrefix }}
+    {{ if .Values.ingress.className -}}
+    ingressClass: {{ .Values.ingress.className }}
+    {{- end }}
+
+    ppsBaseImage: {{ required "A valid .Values.imageBuilder.ppsBaseImage entry required!" .Values.imageBuilder.ppsImage }}
+    generatedImageRepo: {{ required "A valid .Values.imageBuilder.generatedImageRepo entry required!" .Values.imageBuilder.generatedImageRepository }}
+    {{ if .Values.imageBuilder.kanikoImage -}}
+    kanikoImage: {{ .Values.imageBuilder.kanikoImage }}
+    {{- end }}
+    {{ if .Values.imageBuilder.configMap -}}
+    kanikoConfigmapName: {{ .Values.imageBuilder.configMap }}
+    {{- end }}
+    {{ if .Values.imageBuilder.secretName -}}
+    kanikoSecretName: {{ .Values.imageBuilder.secretName }}
+    {{- end }}
+    kanikoServiceAccount: {{ include "datarobot-management-agent.kanikoServiceAccountName" . }}
+    {{- with .Values.imagePullSecrets }}
+    imagePullSecrets:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+    {{- with .Values.imageBuilder.insecureRegistries }}
+    kanikoInsecureRegistries:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}

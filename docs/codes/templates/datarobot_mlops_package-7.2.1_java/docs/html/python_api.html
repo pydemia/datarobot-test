@@ -1,0 +1,613 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>MLOps &mdash; DataRobot MLOps Agent DEV documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'DEV',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="python_examples.html" />
+    <link rel="prev" title="Installation" href="python_installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> DataRobot MLOps Agent
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                DEV
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create_deployment.html">Monitoring Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agent.html">Agent</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="mlops_lib.html">MLOps Library</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mlops_client.html">MLOps Client (7.2.1)</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="mlops_python.html">MLOps Python library (7.2.1)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="python_installation.html">Installation</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">MLOps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="python_examples.html">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mlops_java.html">MLOps Java library (7.2.1)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spooler_configuration.html">Spooler Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment_vars.html">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DataRobot MLOps Agent</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="mlops_lib.html">MLOps Library</a> &raquo;</li>
+        
+          <li><a href="mlops_python.html">MLOps Python library (7.2.1)</a> &raquo;</li>
+        
+      <li>MLOps</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/python_api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mlops">
+<span id="python-classes"></span><h1>MLOps<a class="headerlink" href="#mlops" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="datarobot.mlops.common.enums.OutputType">
+<em class="property">class </em><code class="descclassname">datarobot.mlops.common.enums.</code><code class="descname">OutputType</code><a class="reference internal" href="_modules/datarobot/mlops/common/enums.html#OutputType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.common.enums.OutputType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configures target location for output from MLOps library.</p>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 6.2: </span>This will be removed in 6.4. Use SpoolerType instead</p>
+</div>
+<dl class="attribute">
+<dt id="datarobot.mlops.common.enums.OutputType.STDOUT">
+<code class="descname">STDOUT</code><em class="property"> = 0</em><a class="headerlink" href="#datarobot.mlops.common.enums.OutputType.STDOUT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="datarobot.mlops.common.enums.OutputType.OUTPUT_DIR">
+<code class="descname">OUTPUT_DIR</code><em class="property"> = 1</em><a class="headerlink" href="#datarobot.mlops.common.enums.OutputType.OUTPUT_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="datarobot.mlops.common.enums.OutputType.NONE">
+<code class="descname">NONE</code><em class="property"> = 2</em><a class="headerlink" href="#datarobot.mlops.common.enums.OutputType.NONE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="datarobot.mlops.common.enums.OutputType.INVALID">
+<code class="descname">INVALID</code><em class="property"> = 3</em><a class="headerlink" href="#datarobot.mlops.common.enums.OutputType.INVALID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="datarobot.mlops.common.enums.OutputType.SQS">
+<code class="descname">SQS</code><em class="property"> = 4</em><a class="headerlink" href="#datarobot.mlops.common.enums.OutputType.SQS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="datarobot.mlops.common.enums.OutputType.RABBIT_MQ">
+<code class="descname">RABBIT_MQ</code><em class="property"> = 5</em><a class="headerlink" href="#datarobot.mlops.common.enums.OutputType.RABBIT_MQ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="datarobot.mlops.common.enums.OutputType.PUBSUB">
+<code class="descname">PUBSUB</code><em class="property"> = 6</em><a class="headerlink" href="#datarobot.mlops.common.enums.OutputType.PUBSUB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="datarobot.mlops.mlops.MLOps">
+<em class="property">class </em><code class="descclassname">datarobot.mlops.mlops.</code><code class="descname">MLOps</code><a class="reference internal" href="_modules/datarobot/mlops/mlops.html#MLOps"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.mlops.MLOps" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Member-order:</th><td class="field-body">bysource</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="datarobot.mlops.mlops.MLOps.agent">
+<code class="descname">agent</code><span class="sig-paren">(</span><em>mlops_service_url=None</em>, <em>mlops_api_token=None</em>, <em>agent_jar_path=None</em>, <em>path_prefix=None</em>, <em>verify_ssl=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/mlops.html#MLOps.agent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.mlops.MLOps.agent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup agent in an “embedded” mode, MLOps SDK will transparently manage to configure and run
+the agent.  When this mode is enabled, agent service should not be started separately.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>mlops_service_url</strong> (<em>str</em>) – Required, URL to the DataRobot MLOps service</li>
+<li><strong>mlops_api_token</strong> (<em>str</em>) – Required, DataRobot MLOps API token</li>
+<li><strong>agent_jar_path</strong> (<em>str</em>) – Optional, default - uses JAR file part of the pip package</li>
+<li><strong>path_prefix</strong> (<em>str</em>) – Optional, Path prefix to use to store spool / logs of agent, default
+a temporary directory</li>
+<li><strong>verify_ssl</strong> (<em>bool</em>) – Optional, default - verify SSL certificate, if False then skip ssl
+verification</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the MLOps instance</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#datarobot.mlops.mlops.MLOps" title="datarobot.mlops.mlops.MLOps">MLOps</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="datarobot.mlops.mlops.MLOps.init">
+<code class="descname">init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/mlops.html#MLOps.init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.mlops.MLOps.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finalize the initialization of the MLOps instance. Any reporting can be done only
+after calling this method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">DRAlreadyInitialized if MLOps library is already initialized.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the MLOps instance</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#datarobot.mlops.mlops.MLOps" title="datarobot.mlops.mlops.MLOps">MLOps</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="datarobot.mlops.mlops.MLOps.report_deployment_stats">
+<code class="descname">report_deployment_stats</code><span class="sig-paren">(</span><em>num_predictions</em>, <em>execution_time_ms</em>, <em>deployment_id=None</em>, <em>model_id=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/mlops.html#MLOps.report_deployment_stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.mlops.MLOps.report_deployment_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report the number of predictions and execution time
+to DataRobot MLOps.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>num_predictions</strong> (<em>int</em>) – number of predictions.</li>
+<li><strong>execution_time_ms</strong> (<em>float</em>) – time in milliseconds.</li>
+<li><strong>deployment_id</strong> (<em>str</em>) – the deployment for these metrics</li>
+<li><strong>model_id</strong> (<em>str</em>) – the model for these metrics</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">DRApiException if parameters have the wrong type.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">report status - True on success, False otherwise.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="datarobot.mlops.mlops.MLOps.report_predictions_data">
+<code class="descname">report_predictions_data</code><span class="sig-paren">(</span><em>features_df=None</em>, <em>predictions=None</em>, <em>association_ids=None</em>, <em>class_names=None</em>, <em>deployment_id=None</em>, <em>model_id=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/mlops.html#MLOps.report_predictions_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.mlops.MLOps.report_predictions_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report features and predictions to DataRobot MLOps for tracking and monitoring.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>features_df</strong> (<em>pandas dataframe</em>) – Dataframe containing features to track and monitor.  All the features
+in the dataframe are reported.  Omit the features from the dataframe that do not need
+reporting.</li>
+<li><strong>predictions</strong> (<em>list</em>) – List of predictions.  For a Regression deployments, this is 1D list
+containing prediction values.  For a Classification deployment, this is a 2D list, in
+which the inner list is the list of probabilities for each class type
+Regression Predictions: e.g. [1, 2, 4, 3, 2]
+Binary Classification: e.g. [[0.2, 0.8], [0.3, 0.7]].</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>At least one of <cite>features</cite> or <cite>predictions</cite> should be specified.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>association_ids</strong> (<em>list</em>) – an optional list of association IDs corresponding to each
+prediction. Used for accuracy calculations.  Association IDs have to be unique for each
+prediction to report.  Number of <cite>predictions</cite> should be equal to number of
+<cite>association_ids</cite> in the list</li>
+<li><strong>class_names</strong> (<em>list</em>) – names of predicted classes, e.g. [“class1”, “class2”, “class3”].  For a
+classification deployment, class names are defined during deployment creation.  This
+field allows user to decide its own order for his/her convenience and is associated
+correctly by DataRobot MLOps. This argument is ignored for the Regression deployment.</li>
+<li><strong>deployment_id</strong> (<em>str</em>) – the deployment for these metrics</li>
+<li><strong>model_id</strong> (<em>str</em>) – the model for these metrics</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">report status - True on success, False otherwise.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="datarobot.mlops.mlops.MLOps.set_async_reporting">
+<code class="descname">set_async_reporting</code><span class="sig-paren">(</span><em>async_reporting=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/mlops.html#MLOps.set_async_reporting"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.mlops.MLOps.set_async_reporting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set mode of reporting metrics. Asynchronous mode buffers metrics in memory
+while separate process send them (enqueue) to the spooler.
+default mode is asynchronous
+:param async_reporting: whether to report asynchronously or not
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="datarobot.mlops.mlops.MLOps.set_channel_config">
+<code class="descname">set_channel_config</code><span class="sig-paren">(</span><em>channel_config</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/mlops.html#MLOps.set_channel_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.mlops.MLOps.set_channel_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of settings in semicolon separated string</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>channel_config</strong> (<em>str</em>) – key=value params separated by semicolon</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">MLOps</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="datarobot.mlops.mlops.MLOps.set_deployment_id">
+<code class="descname">set_deployment_id</code><span class="sig-paren">(</span><em>deployment_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/mlops.html#MLOps.set_deployment_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.mlops.MLOps.set_deployment_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the deployment ID of the deployment for which the reporting will be targeted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>deployment_id</strong> (<em>str</em>) – the unique deployment ID.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the MLOps instance</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#datarobot.mlops.mlops.MLOps" title="datarobot.mlops.mlops.MLOps">MLOps</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="datarobot.mlops.mlops.MLOps.set_feature_data_rows_in_one_message">
+<code class="descname">set_feature_data_rows_in_one_message</code><span class="sig-paren">(</span><em>rows</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/mlops.html#MLOps.set_feature_data_rows_in_one_message"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.mlops.MLOps.set_feature_data_rows_in_one_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set how many feature data rows will be in one message.
+Use for channels which have size limit for each message.
+:param rows: how many feature data rows will be in one message
+:type rows: int
+:return: the MLOps instance
+:rtype: MLOps</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="datarobot.mlops.mlops.MLOps.set_filesystem_spooler">
+<code class="descname">set_filesystem_spooler</code><span class="sig-paren">(</span><em>directory</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/mlops.html#MLOps.set_filesystem_spooler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.mlops.MLOps.set_filesystem_spooler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the spooler type to ‘Filesystem’ and set its output to the directory specified.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>directory</strong> (<em>str</em>) – local filesystem directory path</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the MLOps instance</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#datarobot.mlops.mlops.MLOps" title="datarobot.mlops.mlops.MLOps">MLOps</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="datarobot.mlops.mlops.MLOps.set_model_id">
+<code class="descname">set_model_id</code><span class="sig-paren">(</span><em>model_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/mlops.html#MLOps.set_model_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.mlops.MLOps.set_model_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>The model ID for which the reporting information is related.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model_id</strong> (<em>str</em>) – a unique model ID that identifies the given model.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the MLOps instance.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#datarobot.mlops.mlops.MLOps" title="datarobot.mlops.mlops.MLOps">MLOps</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="datarobot.mlops.mlops.MLOps.set_pubsub_spooler">
+<code class="descname">set_pubsub_spooler</code><span class="sig-paren">(</span><em>project_id</em>, <em>topic_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/mlops.html#MLOps.set_pubsub_spooler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.mlops.MLOps.set_pubsub_spooler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the spooler type to PubSub. Note that PubSub only supports Python3.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>project_id</strong> (<em>str</em>) – GCP PubSub project id. This should be the full project id path.</li>
+<li><strong>topic_name</strong> (<em>str</em>) – GCP PubSub topic name. This should be name of the topic within the
+project, not the full topic path that includes the project id.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the MLOps instance</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#datarobot.mlops.mlops.MLOps" title="datarobot.mlops.mlops.MLOps">MLOps</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="datarobot.mlops.mlops.MLOps.set_rabbitmq_spooler">
+<code class="descname">set_rabbitmq_spooler</code><span class="sig-paren">(</span><em>queue_url</em>, <em>queue_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/mlops.html#MLOps.set_rabbitmq_spooler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.mlops.MLOps.set_rabbitmq_spooler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the spooler type to RABBITMQ.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>queue_url</strong> (<em>str</em>) – RabbitMQ queue URL</li>
+<li><strong>queue_name</strong> (<em>str</em>) – RabbitMQ queue name</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the MLOps instance</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#datarobot.mlops.mlops.MLOps" title="datarobot.mlops.mlops.MLOps">MLOps</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="datarobot.mlops.mlops.MLOps.set_sqs_spooler">
+<code class="descname">set_sqs_spooler</code><span class="sig-paren">(</span><em>queue</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/mlops.html#MLOps.set_sqs_spooler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.mlops.MLOps.set_sqs_spooler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the spooler type to SQS.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>queue</strong> (<em>str</em>) – AWS SQS queue name or queue URL. If the parameter begins with “http”, it is
+assumed to be the queue URL. Otherwise, it is assumed to be the queue name.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the MLOps instance</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#datarobot.mlops.mlops.MLOps" title="datarobot.mlops.mlops.MLOps">MLOps</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="datarobot.mlops.mlops.MLOps.set_stdout_spooler">
+<code class="descname">set_stdout_spooler</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/mlops.html#MLOps.set_stdout_spooler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.mlops.MLOps.set_stdout_spooler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use STDOUT in place of a spooler. Any reported metrics will go to stdout instead of
+being routed to the agent.
+:returns: the MLOps instance
+:rtype: MLOps</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="datarobot.mlops.mlops.MLOps.shutdown">
+<code class="descname">shutdown</code><span class="sig-paren">(</span><em>timeout_sec=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/mlops.html#MLOps.shutdown"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.mlops.MLOps.shutdown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Safe MLOps shutdown.
+Ensures that all metrics are processed and forwarded to the configured output.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="python_examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="python_installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright © DataRobot, Inc. 2019. All Rights Reserved..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+Installation
+============
+
+The Java version of the MLOps library is included in the TAR distribution at
+`datarobot_mlops_package-*/lib/datarobot-mlops-{mlops_java_version}.jar`.
+
+You can link your program to the JAR by simply by adding the JAR file to your CLASSPATH environment variable.
+
+If you are using maven, you can install the JAR into your local mvn repository:
+
+.. code-block:: sh
+
+    cd examples/java
+    ./install_jar_into_maven.sh
+
+Then include it in your `pom.xml` file:
+
+.. code-block:: XML
+
+    <dependencies>
+        <dependency>
+            <groupId>com.datarobot</groupId>
+            <artifactId>datarobot-mlops</artifactId>
+            <version>...</version>
+        </dependency>
+    </dependencies>

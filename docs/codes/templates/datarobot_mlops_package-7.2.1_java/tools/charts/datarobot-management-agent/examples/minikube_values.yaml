@@ -1,0 +1,44 @@
+# Example config overlay for Minikube. You can copy and update it for your
+# environment and then use the `--values <filename>` to overlay them with
+# the default values.
+#
+# NOTE: minikube is for demonstration purposes only.
+#
+#   minikube delete
+#   minikube config set kubernetes-version 1.21
+#   minikube config set disk-size 54G
+#   minikube config set memory 6G
+#   minikube config set insecure-registry registry.minikube
+#   minikube start --vm=true --addons=registry --addons=ingress --addons=registry-aliases
+#
+# You will need to add the minikube IP(s) as an insecure-registry to your docker daemon config:
+#   "insecure-registries": [
+#       "192.168.0.0/16"
+#    ]
+#
+# To push images to minikube registry addon, you can use the following example:
+#   make -C tools/agent_docker REGISTRY=$(minikube ip):5000 push
+
+datarobot:
+  # You must create this secret via:
+  #   kubectl -n <NAMESPACE> create secret generic mlops-api-key --from-literal=secret=<YOUR-API-TOKEN>
+  apiSecretName: mlops-api-key
+  predictionEnvId: <PREDICTION-ENV-ID>
+  url: https://app.datarobot.com
+
+bosun:
+  repository: registry.minikube/datarobot/mlops-management-agent
+
+tracking:
+  enabled: true
+  image: registry.minikube/datarobot/mlops-tracking-agent:latest
+
+imageBuilder:
+  ppsImage: registry.minikube/datarobot/datarobot-portable-prediction-api:7.1.0-r2426
+  generatedImageRepository: registry.minikube/mlops/frozen-models
+  insecureRegistries:
+    - registry.minikube
+
+ingress:
+  outfacingURLPrefix: http://<EXTERNAL-IP>/deployments/
+

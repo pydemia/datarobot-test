@@ -1,0 +1,531 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>MLOps Client (7.2.1) &mdash; DataRobot MLOps Agent DEV documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'DEV',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="MLOps Python library (7.2.1)" href="mlops_python.html" />
+    <link rel="prev" title="MLOps Library" href="mlops_lib.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> DataRobot MLOps Agent
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                DEV
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create_deployment.html">Monitoring Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agent.html">Agent</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="mlops_lib.html">MLOps Library</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">MLOps Client (7.2.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlops_python.html">MLOps Python library (7.2.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlops_java.html">MLOps Java library (7.2.1)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spooler_configuration.html">Spooler Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment_vars.html">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DataRobot MLOps Agent</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="mlops_lib.html">MLOps Library</a> &raquo;</li>
+        
+      <li>MLOps Client (7.2.1)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/mlops_client.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mlops-client-7-2-1">
+<span id="classes"></span><h1>MLOps Client (7.2.1)<a class="headerlink" href="#mlops-client-7-2-1" title="Permalink to this headline">¶</a></h1>
+<p>The MLOps client is a library that can be used to interact directly with DataRobot MLOps. It can
+be used to create deployments, upload training datasets, and more.</p>
+<p>Because the MLOps client interacts with DataRobot MLOps, it must be run from an environment with
+connectivity to DataRobot MLOps.</p>
+<dl class="class">
+<dt id="datarobot.mlops.connected.enums.DatasetSourceType">
+<em class="property">class </em><code class="descclassname">datarobot.mlops.connected.enums.</code><code class="descname">DatasetSourceType</code><a class="reference internal" href="_modules/datarobot/mlops/connected/enums.html#DatasetSourceType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.connected.enums.DatasetSourceType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dataset association type.
+Used to mark uploaded dataset as TRAINING or SCORING
+for a deployment within DataRobot MLOps.</p>
+<dl class="attribute">
+<dt id="datarobot.mlops.connected.enums.DatasetSourceType.TRAINING">
+<code class="descname">TRAINING</code><em class="property"> = 'training'</em><a class="headerlink" href="#datarobot.mlops.connected.enums.DatasetSourceType.TRAINING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="datarobot.mlops.connected.enums.DatasetSourceType.SCORING">
+<code class="descname">SCORING</code><em class="property"> = 'scoring'</em><a class="headerlink" href="#datarobot.mlops.connected.enums.DatasetSourceType.SCORING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="datarobot.mlops.connected.client.MLOpsClient">
+<em class="property">class </em><code class="descclassname">datarobot.mlops.connected.client.</code><code class="descname">MLOpsClient</code><span class="sig-paren">(</span><em>service_url</em>, <em>api_key</em>, <em>verify=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/connected/client.html#MLOpsClient"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.connected.client.MLOpsClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class provides helper methods to communicate with
+DataRobot MLOps.
+<em>Note</em>:These class methods can only be run from a node
+with connectivity to DataRobot MLOps.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>service_url</strong> (<em>str</em>) – DataRobot MLOps URL.</li>
+<li><strong>api_key</strong> (<em>str</em>) – DataRobot App user API key.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">class instance</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#datarobot.mlops.connected.client.MLOpsClient" title="datarobot.mlops.connected.client.MLOpsClient">MLOpsClient</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Member-order:</th><td class="field-body"><p class="first last">bysource</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="datarobot.mlops.connected.client.MLOpsClient.create_model_package">
+<code class="descname">create_model_package</code><span class="sig-paren">(</span><em>model_info</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/connected/client.html#MLOpsClient.create_model_package"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.connected.client.MLOpsClient.create_model_package" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an external model package in DataRobot MLOps from JSON configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model_info</strong> (<em>dict</em>) – a JSON object of model parameters</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">model package ID of newly created model</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><strong>DRConnectedException</strong> – if model package creation failed.</td>
+</tr>
+</tbody>
+</table>
+<p>Example JSON for a regression model:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+  &quot;name&quot;: &quot;Lending club regression&quot;,
+  &quot;modelDescription&quot;: {
+    &quot;description&quot;: &quot;Regression on lending club dataset&quot;
+  }
+  &quot;target&quot;: {
+    &quot;type&quot;: &quot;Regression&quot;,
+    &quot;name&quot;: &quot;loan_amnt
+  }
+}
+</pre></div>
+</div>
+<p>Example JSON for a binary classification model:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+  &quot;name&quot;: &quot;Surgical Model&quot;,
+  &quot;modelDescription&quot;: {
+    &quot;description&quot;: &quot;Binary classification on surgical dataset&quot;,
+    &quot;location&quot;: &quot;/tmp/myModel&quot;
+  },
+  &quot;target&quot;: {
+     &quot;type&quot;: &quot;Binary&quot;,
+     &quot;name&quot;: &quot;complication&quot;,
+     &quot;classNames&quot;: [&quot;Yes&quot;,&quot;No&quot;],  # minority/positive class should be listed first
+     &quot;predictionThreshold&quot;: 0.5
+    }
+}
+</pre></div>
+</div>
+<p>Example JSON for a multiclass classification model:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Iris classifier&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;modelDescription&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Classification on iris dataset&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;/tmp/myModel&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Multiclass&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Species&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;classNames&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Iris-versicolor&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Iris-virginica&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Iris-setosa&quot;</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="datarobot.mlops.connected.client.MLOpsClient.deploy_model_package">
+<code class="descname">deploy_model_package</code><span class="sig-paren">(</span><em>model_package_id</em>, <em>label</em>, <em>description=''</em>, <em>wait_for_result=True</em>, <em>timeout=180</em>, <em>prediction_environment_id=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/connected/client.html#MLOpsClient.deploy_model_package"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.connected.client.MLOpsClient.deploy_model_package" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new deployment for the model package.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>model_package_id</strong> (<em>str</em>) – ID of the model package</li>
+<li><strong>label</strong> (<em>str</em>) – label for this deployment</li>
+<li><strong>description</strong> (<em>str</em>) – description for this deployment</li>
+<li><strong>wait_for_result</strong> (<em>bool</em>) – if True, wait for operation to finish. If False, return immediately.</li>
+<li><strong>timeout</strong> (<em>int</em>) – if wait_for_result is True, how long to wait for async completion</li>
+<li><strong>prediction_environment_id</strong> (<em>str</em>) – ID of prediction environment to deploy to.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">deployment ID of the new deployment</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">str</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><strong>DRConnectedException</strong> – if deployment fails</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="datarobot.mlops.connected.client.MLOpsClient.get_model_id">
+<code class="descname">get_model_id</code><span class="sig-paren">(</span><em>deployment_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/connected/client.html#MLOpsClient.get_model_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.connected.client.MLOpsClient.get_model_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get model ID by deployment ID.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>deployment_id</strong> (<em>str</em>) – deployment ID.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">model ID</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><strong>DRConnectedException</strong> – if request fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="datarobot.mlops.connected.client.MLOpsClient.get_model_package">
+<code class="descname">get_model_package</code><span class="sig-paren">(</span><em>model_package_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/connected/client.html#MLOpsClient.get_model_package"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.connected.client.MLOpsClient.get_model_package" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get information about a model package from DataRobot MLOps.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model_package_id</strong> (<em>str</em>) – ID of the model package</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">JSON containing the model package metadata</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><strong>DRConnectedException</strong> – if model package retrieval failed.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="datarobot.mlops.connected.client.MLOpsClient.replace_model_package">
+<code class="descname">replace_model_package</code><span class="sig-paren">(</span><em>deployment_id</em>, <em>model_package_id</em>, <em>reason</em>, <em>timeout=180</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/connected/client.html#MLOpsClient.replace_model_package"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.connected.client.MLOpsClient.replace_model_package" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new deployment for the model package.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>deployment_id</strong> – ID of the deployment</li>
+<li><strong>model_package_id</strong> (<em>str</em>) – ID of the model package</li>
+<li><strong>reason</strong> – reason for replacement. One of “ACCURACY”, “DATA_DRIFT”,
+“ERRORS”, “SCHEDULED_REFRESH”, “SCORING_SPEED”, or “OTHER”</li>
+<li><strong>timeout</strong> (<em>int</em>) – time to wait for result (sec). Default: 180 sec.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">void</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><strong>DRConnectedException</strong> – if model replacement fails</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="datarobot.mlops.connected.client.MLOpsClient.set_scoring_dataset">
+<code class="descname">set_scoring_dataset</code><span class="sig-paren">(</span><em>deployment_id</em>, <em>dataset_filepath</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/connected/client.html#MLOpsClient.set_scoring_dataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.connected.client.MLOpsClient.set_scoring_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Upload scoring dataset and
+associate it with a deployment in DataRobot MLOps.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>deployment_id</strong> (<em>str</em>) – deployment ID.</li>
+<li><strong>dataset_filepath</strong> (<em>str</em>) – path to a CSV dataset file.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dataset ID</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="datarobot.mlops.connected.client.MLOpsClient.submit_actuals">
+<code class="descname">submit_actuals</code><span class="sig-paren">(</span><em>deployment_id</em>, <em>actuals</em>, <em>wait_for_result=True</em>, <em>timeout=180</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/connected/client.html#MLOpsClient.submit_actuals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.connected.client.MLOpsClient.submit_actuals" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>deployment_id</strong> – ID of the deployment for which the actuals are being submitted</li>
+<li><strong>actuals</strong> – List of actuals with schema:
+Regression: {“actualValue”: 23, “wasActedOn”: False / True,
+“timestamp”: RFC3339 timestamp, “associationId”: “x_23423_23423”}
+Binary: {“actualValue”: “&lt;className&gt;”, “wasActedOn”: False / True,
+“timestamp”: RFC3339 timestamp, “associationId”: “x_23423_23423”}</li>
+<li><strong>wait_for_result</strong> (<em>bool</em>) – if True, wait for operation to finish. If False, return immediately.</li>
+<li><strong>timeout</strong> (<em>int</em>) – if wait_for_result is True, how long to wait for async completion</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="datarobot.mlops.connected.client.MLOpsClient.upload_dataset">
+<code class="descname">upload_dataset</code><span class="sig-paren">(</span><em>dataset_filepath</em>, <em>timeout=180</em>, <em>dry_run=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datarobot/mlops/connected/client.html#MLOpsClient.upload_dataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#datarobot.mlops.connected.client.MLOpsClient.upload_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Upload a dataset (from a CSV file) into DataRobot MLOps.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataset_filepath</strong> (<em>str</em>) – path to a CSV dataset file.</li>
+<li><strong>timeout</strong> (<em>int</em>) – time to wait for result (sec). Default: 180 sec.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dataset ID</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">str</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><strong>DRConnectedException</strong> – if dataset upload failed.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="mlops_python.html" class="btn btn-neutral float-right" title="MLOps Python library (7.2.1)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="mlops_lib.html" class="btn btn-neutral float-left" title="MLOps Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright © DataRobot, Inc. 2019. All Rights Reserved..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

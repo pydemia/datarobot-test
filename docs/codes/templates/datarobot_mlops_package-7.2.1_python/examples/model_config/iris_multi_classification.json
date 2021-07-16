@@ -1,0 +1,12 @@
+{
+        "name": "MLOps Example Iris classifier",
+        "modelDescription": {
+            "modelName": "Iris classification model",
+            "description": "Classification on iris dataset"
+        },
+        "target": {
+            "type": "Multiclass",
+            "name": "Species",
+            "classNames": ["Iris-versicolor", "Iris-virginica", "Iris-setosa"]
+        }
+}

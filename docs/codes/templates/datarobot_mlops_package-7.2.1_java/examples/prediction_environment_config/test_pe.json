@@ -1,0 +1,6 @@
+{
+        "name": "MLOps Example PE",
+        "description": "A prediction environment to run MLOps examples",
+        "platform": "onPremise",
+        "supportedModelFormats": ["externalModel"] 
+}

@@ -1,0 +1,333 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Quick Start &mdash; DataRobot MLOps Agent DEV documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'DEV',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Agent" href="agent.html" />
+    <link rel="prev" title="Monitoring Concepts" href="create_deployment.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> DataRobot MLOps Agent
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                DEV
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create_deployment.html">Monitoring Concepts</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#before-you-start">Before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-up-the-deployment-environment">Set up the deployment environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agent-hosts">Agent Hosts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prediction-hosts">Prediction Hosts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#optional-try-the-examples">(Optional) Try the Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-model-package-and-deploy-it">Create a Model Package and Deploy It</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#through-the-ui">Through the UI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#through-the-api">Through the API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#instrument-your-deployment">Instrument your deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="agent.html">Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mlops_lib.html">MLOps Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spooler_configuration.html">Spooler Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment_vars.html">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DataRobot MLOps Agent</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Quick Start</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/quickstart.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quick-start">
+<span id="quickstart-guide"></span><h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
+<p>Note: DataRobot MLOps agent is part of the DataRobot MLOps product.</p>
+<div class="section" id="before-you-start">
+<h2>Before you start<a class="headerlink" href="#before-you-start" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Know the URL of DataRobot MLOps; For on-prem installations, this is typically of the form
+<cite>https://10.0.0.1</cite> or <cite>https://my-server-name</cite>.</li>
+<li>Obtain an API token from DataRobot MLOps. You can do this through the UI by going to the <strong>Developer Tools</strong> tab under account settings
+and finding the <strong>API Keys</strong> section.</li>
+</ol>
+</div>
+<div class="section" id="set-up-the-deployment-environment">
+<h2>Set up the deployment environment<a class="headerlink" href="#set-up-the-deployment-environment" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="agent-hosts">
+<h3>Agent Hosts<a class="headerlink" href="#agent-hosts" title="Permalink to this headline">¶</a></h3>
+<p>Perform the following for each machine that will be used to upload data to
+DataRobot MLOps. This setup only needs to be performed once for each deployment environment.</p>
+<ol class="arabic">
+<li><p class="first">Ensure that Java (version 8) is installed.</p>
+</li>
+<li><p class="first">Download the DataRobot MLOps package TAR file available through the UI under the user icon -&gt; <strong>Developer Tools</strong> -&gt; <strong>External Monitoring Agent</strong>. The TAR file includes the agent and library software, example code, documentation, and associated scripts.</p>
+</li>
+<li><p class="first">Change directory into the unpacked directory.</p>
+</li>
+<li><p class="first">Run the agent using the following procedures:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><a class="reference internal" href="agent_installation.html#agent-instructions"><span class="std std-ref">Install the agent</span></a>.</li>
+<li><a class="reference internal" href="agent_configuration.html#id1"><span class="std std-ref">Configure the agent</span></a>.</li>
+<li><a class="reference internal" href="agent_installation.html#agent-instructions"><span class="std std-ref">Start the agent service</span></a>.</li>
+</ol>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="prediction-hosts">
+<h3>Prediction Hosts<a class="headerlink" href="#prediction-hosts" title="Permalink to this headline">¶</a></h3>
+<p>On each machine that will be using the MLOps library to report predictions, ensure that appropriate libraries/requirements
+are installed.</p>
+<p><em>Java</em>: the Java library is included in the tar file in <cite>lib/datarobot-mlops-&lt;version&gt;.jar</cite>.</p>
+<p><em>Python</em>: the Python version of the library is included in the tar file in <cite>lib/datarobot_mlops-*-py2.py3-none-any.whl</cite>. This works
+for both Python2 and Python3. You can install it using <cite>pip install lib/datarobot_mlops-*-py2.py3-none-any.whl</cite>.</p>
+</div>
+</div>
+<div class="section" id="optional-try-the-examples">
+<h2>(Optional) Try the Examples<a class="headerlink" href="#optional-try-the-examples" title="Permalink to this headline">¶</a></h2>
+<p>The agent tar file includes several end-to-end examples in various languages.</p>
+<p><a class="reference internal" href="examples.html"><span class="doc">More information on examples</span></a>.</p>
+</div>
+<div class="section" id="create-a-model-package-and-deploy-it">
+<h2>Create a Model Package and Deploy It<a class="headerlink" href="#create-a-model-package-and-deploy-it" title="Permalink to this headline">¶</a></h2>
+<p>Before you can begin monitoring, you must create a model package and deploy it.
+A model package stores metadata about your external model: the problem type (e.g., regression),
+the training data used, etc. Once you have a model package, you can deploy it to a prediction environment
+(test environment, production environment, etc.). Monitoring metrics are tracked per deployment. You can create
+and deploy your model package through the UI or through the API.</p>
+<div class="section" id="through-the-ui">
+<h3>Through the UI<a class="headerlink" href="#through-the-ui" title="Permalink to this headline">¶</a></h3>
+<p>You can create a model package through the UI’s <strong>Model Registry</strong> page.  Once
+you have a model package, you can deploy it. In the deployment’s <strong>Integrations</strong> tab, you can view example code
+as well as the values for the MLOPS_DEPLOYMENT_ID and MLOPS_MODEL_ID that you will need when reporting
+statistics from your deployment.</p>
+</div>
+<div class="section" id="through-the-api">
+<h3>Through the API<a class="headerlink" href="#through-the-api" title="Permalink to this headline">¶</a></h3>
+<p>Helper scripts for creating model packages and deployments are available in the <cite>examples</cite> directory.
+Every example has its own script to create the related model package and deployment in
+a <cite>create_deployment.sh</cite> script.
+This script interacts with DataRobot MLOps directly and so must be run on a machine with
+connectivity to it.
+When run, it returns a deployment ID and model ID that you will need to instrument your deployment.</p>
+</div>
+</div>
+<div class="section" id="instrument-your-deployment">
+<h2>Instrument your deployment<a class="headerlink" href="#instrument-your-deployment" title="Permalink to this headline">¶</a></h2>
+<p>For each deployment, do the following:</p>
+<ol class="arabic simple">
+<li>Locate the MLOps library and sample code. These are included within the MLOps TAR file distribution.</li>
+<li>Configure the deployment ID and model ID in your environment.</li>
+<li>Instrument your code with MLOps calls as shown in the sample code provided for your programming language.</li>
+<li>To report results to DataRobot MLOps, you must configure the library to use the same channel
+as is configured in the agent.
+For testing, you can configure the library to output to stdout though these calls will
+not be forwarded to the agent or DataRobot MLOps.
+Configure the library via the <a class="reference internal" href="mlops_lib.html#mlops-lib"><span class="std std-ref">mlops API</span></a>.</li>
+<li>You can view your deployment in the DataRobot MLOps UI under the <strong>Deployments</strong> tab.</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="agent.html" class="btn btn-neutral float-right" title="Agent" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="create_deployment.html" class="btn btn-neutral float-left" title="Monitoring Concepts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright © DataRobot, Inc. 2019. All Rights Reserved..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

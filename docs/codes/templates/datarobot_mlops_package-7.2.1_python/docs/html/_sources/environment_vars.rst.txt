@@ -1,0 +1,36 @@
+Environment Variables
+---------------------
+
+.. _env-vars:
+
+The MLOps library and agent can be configured with the following environment variables.
+
+Basic Configuration
+===================
+
+General Configuration
+*********************
+
+| **MLOPS_DEPLOYMENT_ID** - Set the deployment ID that the MLOps library reports to.
+| **MLOPS_MODEL_ID** - Set the model ID that the MLOps library is reporting about.
+| **MLOPS_SPOOLER_TYPE** - Set the spooler type that the MLOps library will use to communicate with the agent. Valid options are *FILESYSTEM*, *SQS*, *RABBITMQ*, and *PUBSUB*. The value of *NONE* can be used to disable MLOps library reporting and a value of *STDOUT* can be used to have the MLOps library print the reported metrics to stdout rather than forward them to the agent.
+
+Spooler-specific Configuration
+******************************
+
+| **MLOPS_FILESYSTEM_DIRECTORY** - When using the *FILESYSTEM* spooler type, use this directory to store the metrics.
+
+| **MLOPS_SQS_QUEUE_URL** - When using the *SQS* spooler type, use this URL as the spooler. When using *SQS*, either the spooler name or URL must be provided.
+| **MLOPS_SQS_QUEUE_NAME** - When using the *SQS* spooler type, use this queue name as the spooler. When using *SQS*, either the spooler name or URL must be provided.
+
+| **MLOPS_RABBITMQ_QUEUE_URL** - When using the *RABBITMQ* spooler type, use this URL for the spooler.
+| **MLOPS_RABBITMQ_QUEUE_NAME** - When using the *RABBITMQ* spooler type, use this queue name.
+
+| **MLOPS_PUBSUB_PROJECT_ID** - When using the *PUBSUB* spooler type, use this project ID. Note this should be the full path of the project ID.
+| **MLOPS_PUBSUB_TOPIC_NAME** - When using the *PUBSUB* spooler type, use this topic name. Note this should not include the project id.
+
+Advanced Configuration
+======================
+
+| **MLOPS_ASYNC_REPORTING** - Have the MLOps library reporting is metrics asynchronously to the spooler.
+| **MLOPS_FEATURE_DATA_ROWS_IN_ONE_MESSAGE** - The number of feature rows that should be included in a single message to the spooler.

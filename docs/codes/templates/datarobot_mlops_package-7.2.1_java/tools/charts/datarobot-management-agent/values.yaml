@@ -1,0 +1,196 @@
+# Default values for datarobot-management-agent.
+# This is a YAML-formatted file.
+
+datarobot:
+  # If you have an Enterprise install of DataRobot MLOps, please update this URL accordingly.
+  url: https://app.datarobot.com
+
+  # -REQUIRED-
+  # You will have to create your own Secret resource in the namespace you are installing Bosun
+  # into that contains the API Key you will want it to use. You can use an existing or we
+  # recommend creating a key dedicated to Bosun by browsing here:
+  #   https://app.datarobot.com/account/developer-tools
+  #
+  # When you have a key, you can create the secret with the following command:
+  #   kubectl -n <NAMESPACE> create secret generic <NAME-OF-SECRET> --from-literal=secret=<YOUR-API-TOKEN>
+  apiSecretName: ""
+
+  # -REQUIRED-
+  # This is the Prediction Environment ID that you would like this instance of Bosun to manage. You can
+  # create a new one here:
+  #   https://app.datarobot.com/deployments/prediction-environments
+  predictionEnvId: ""
+
+bosun:
+  # -REQUIRED-
+  # The Bosun image is not hosted publicly anywhere so you will need to build it and push it to
+  # your own registry that Kubernetes has access to. Instructions on how to build it can be found
+  # in the `tools/bosun_docker/` directory of this tarball.
+  #
+  #   (Note: you must not include the tag in this field)
+  #
+  #   i.e. registry.your-company.com/datarobot/mlops-management-agent
+  repository: ""
+  # This option is for development purposes. By default we will use the same version of the image
+  # as is specified in Chart.yaml but if you need to override that, you can do it here.
+  tag: ""
+
+  # Bosun manages Deployment, Service, Ingress, etc resources in the namespace it is launched it
+  # so it needs a service account with the appropriate role to function.
+  rbac:
+    # Create the Role with all necessary rules for Bosun to deploy models to this cluster
+    create: true
+  serviceAccount:
+    # Specifies whether a service account should be created
+    create: true
+    # Annotations to add to the service account
+    annotations: {}
+    # The name of the service account to use.
+    # If not set and create is true, a name is generated using the fullname template
+    name: ""
+
+  resources: {}
+    # If you want to specify resources, uncomment the following lines, adjust
+    # them as necessary, and remove the curly braces after 'resources:'.
+    # limits:
+    #   cpu: 1000m
+    #   memory: 500Mi
+    #   ephemeral-storage: 10Gi
+    # requests:
+    #   cpu: 100m
+    #   memory: 300Mi
+    #   ephemeral-storage: 500Mi
+
+  podAnnotations: {}
+  podSecurityContext: {}
+    # fsGroup: 2000
+  securityContext: {}
+    # capabilities:
+    #   drop:
+    #   - ALL
+    # readOnlyRootFilesystem: false
+    # runAsNonRoot: true
+    # runAsUser: 1000
+
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+
+tracking:
+  # Toggle if you want to enable drift, tracking and other metrics for this external deployment. If
+  # enabled, we will launch a sidecar container to report metrics back to DataRobot MLOps.
+  enabled: true
+
+  # -REQUIRED (if enabled)-
+  # The Tracking Agent image is not hosted publicly anywhere so you will need to build it and push it to
+  # your own registry that Kubernetes has access to. Instructions on how to build can be found
+  # in the `tools/agent_docker/` directory of this tarball.
+  #
+  #   i.e. registry.your-company.com/datarobot/mlops-tracking-agent:latest
+  image: ""
+
+  resources: {}
+    # TODO settings resources for tracking agent sidecar is not supported yet
+    # If you do want to specify resources, uncomment the following lines, adjust
+    # them as necessary, and remove the curly braces after 'resources:'.
+    # limits:
+    #   cpu: 1000m
+    #   memory: 1Gi
+    # requests:
+    #   cpu: 100m
+    #   memory: 300Mi
+
+imageBuilder:
+  # -REQUIRED-
+  # Bosun builds a new docker image for every model that is deployed. This creates an immutable record
+  # of every model that was ever deployed. To start, we need the base image to use. It is not hosted
+  # publicly so you will have to download it from DataRobot MLOps and push it to a registry that
+  # your Kubernetes cluster has access to. You an download the latest image from the
+  # "Portable Prediction Server Docker Image" section of:
+  #   https://app.datarobot.com/account/developer-tools
+  # And push to your registry by:
+  #   docker load < <PATH_TO_TAR_GZ_FILE>
+  #   docker tag datarobot/datarobot-portable-prediction-api:<VERSION> <REMOTE_PPS_IMAGE>
+  #   docker push <REMOTE_PPS_IMAGE>
+  #
+  #   (Note: you **cannot** use the "latest" tag. You must use the same tag that resulted
+  #    from loading the image)
+  #
+  #   i.e. registry.your-company.com/datarobot/datarobot-portable-prediction-api:<VERSION>
+  ppsImage: ""
+
+  # -REQUIRED-
+  # Bosun also needs **push** access to a docker repository. Please provide the full path to it below.
+  # All models will be pushed to this single repository but with unique tags.
+  #
+  #   (Note: this is just the repository; do not include a tag)
+  #
+  #   i.e. registry.your-company.com/mlops/frozen-models
+  generatedImageRepository: ""
+
+  # We use a 3rd party tool to perform the docker builds from within the cluster. Leave this blank to
+  # use the latest supported version of Kaniko that we pull from the public repository. If you would
+  # like to serve the image locally or override the version we've certified (not recommended) then
+  # please set it below.
+  kanikoImage: ""
+
+  # If you require additional configuration to setup Kaniko please create a configMap and provide its
+  # name here. You can read more about Kaniko configuration here:
+  #   https://github.com/GoogleContainerTools/kaniko#pushing-to-different-registries
+  configMap: ""
+
+  # If your registry has support for basic username/password auth, you can provide a Secret of type
+  # "kubernetes.io/dockerconfigjson".
+  secretName: ""
+
+  # If you have a registry that communicates via HTTP, list them here.
+  insecureRegistries: []
+
+  # We understand that building docker images can open up certain security holes which is why we try
+  # and run Kaniko in a least privileged manner. You can learn more about Kaniko's security story
+  # from here:
+  #   https://github.com/GoogleContainerTools/kaniko#security
+  rbac:
+    # Create the PodSecurityPolicy and Role to run Kaniko in a secure manner
+    create: true
+  serviceAccount:
+    # Specifies whether a service account should be created
+    create: true
+    # Annotations to add to the service account
+    annotations: {}
+    # The name of the service account to use.
+    # If not set and create is true, a name is generated using the fullname template
+    name: ""
+  resources: {}
+    # TODO settings resources for Kaniko image builder is not supported yet
+    # If you do want to specify resources, uncomment the following lines, adjust
+    # them as necessary, and remove the curly braces after 'resources:'.
+    # limits:
+    #   cpu: 1000m
+    #   memory: 2Gi
+    #   ephemeral-storage: 20Gi
+    # requests:
+    #   cpu: 100m
+    #   memory: 300Mi
+    #   ephemeral-storage: 15Gi
+  # TODO add support for nodeSelector, tolerations, etc.
+
+ingress:
+  # -REQUIRED-
+  # This is the URL prefix that Bosun will use when setting up the Ingress and reporting back
+  # the location to make predictions to DataRobot MLOPs:
+  #
+  #   i.e. http://your-company.com/deployments/
+  outfacingURLPrefix: ""
+
+  # If you cluster has multiple ingress controllers and no default, please specify the
+  # desired ingress class to use.
+  className: ""
+
+# TODO add support for nodeSelector, tolerations, etc. and resource requests/limits for the deployments
+# we manage.
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+

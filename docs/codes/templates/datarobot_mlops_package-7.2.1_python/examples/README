@@ -1,0 +1,18 @@
+This directory provides samples and examples for various languages and use cases.
+- Samples only provide code snippets for manual inspection.
+- Examples include model configuration, data, and scripts to create deployments and run the examples.
+
+All examples (except the SingleCommand* examples) require the agent to be configured and
+running prior to running the example. See the instructions in file://<agent_tar_dir>/docs/html/quickstart.html
+
+To run an example:
+
+1. First create the model package and initialize the deployment by running:
+   create_deployment.sh
+
+2. Set the environment variables for the deployment and the model returned from creating the deployment
+   by copy/pasting them into your shell.
+   export MLOPS_DEPLOYMENT_ID=<deployment_id>; export MLOPS_MODEL_ID=<model_id>
+
+3. Then generate predictions and report statistics to MLOps by running:
+   run_example.sh

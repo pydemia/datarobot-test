@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>MLOps Library &mdash; DataRobot MLOps Agent DEV documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'DEV',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="MLOps Client (7.2.1)" href="mlops_client.html" />
+    <link rel="prev" title="Agent configuration" href="agent_configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> DataRobot MLOps Agent
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                DEV
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create_deployment.html">Monitoring Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agent.html">Agent</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MLOps Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mlops_client.html">MLOps Client (7.2.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlops_python.html">MLOps Python library (7.2.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlops_java.html">MLOps Java library (7.2.1)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spooler_configuration.html">Spooler Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment_vars.html">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DataRobot MLOps Agent</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>MLOps Library</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/mlops_lib.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mlops-library">
+<h1>MLOps Library<a class="headerlink" href="#mlops-library" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound" id="mlops-lib">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mlops_client.html">MLOps Client (7.2.1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mlops_python.html">MLOps Python library (7.2.1)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="python_installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_api.html">MLOps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="python_api.html#methods">Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="python_examples.html">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mlops_java.html">MLOps Java library (7.2.1)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="java_installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java_api.html">MLOps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="java_api.html#methods">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#agent">agent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#agentisavailable">agentIsAvailable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#getactualmap">getActualMap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#getconfig">getConfig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#getinstance">getInstance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#init">init</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#reportactuals">reportActuals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#reportactualstuples">reportActualsTuples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#reportclassificationpredictionssc">reportClassificationPredictionsSc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#reportdeploymentstats">reportDeploymentStats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#id1">reportDeploymentStats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#reportpredictionsdata">reportPredictionsData</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#id2">reportPredictionsData</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#id3">reportPredictionsData</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#reportpredictionsdatalist">reportPredictionsDataList</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#id4">reportPredictionsDataList</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#reportregressionpredictionsc">reportRegressionPredictionSc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#setasyncreporting">setAsyncReporting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#setchannelconfig">setChannelConfig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#setconfig">setConfig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#setdeploymentid">setDeploymentId</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#setfeaturedatarowsinonemessage">setFeatureDataRowsInOneMessage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#setfilesystemspooler">setFilesystemSpooler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#setkafkaspooler">setKafkaSpooler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#id5">setKafkaSpooler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#setmodelid">setModelId</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#setnospooler">setNoSpooler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#setpubsubspooler">setPubsubSpooler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#setrabbitmqspooler">setRabbitmqSpooler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#setsqsspooler">setSqsSpooler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#setstdoutspooler">setStdoutSpooler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#setsyncreporting">setSyncReporting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_api.html#shutdown">shutdown</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="java_spark_api.html">MLOpsSparkUtils</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="java_spark_api.html#methods">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="java_spark_api.html#reportactuals">reportActuals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_spark_api.html#reportpredictions">reportPredictions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_spark_api.html#id1">reportPredictions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_spark_api.html#id2">reportPredictions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="java_spark_api.html#id3">reportPredictions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="java_examples.html">Examples</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="mlops_client.html" class="btn btn-neutral float-right" title="MLOps Client (7.2.1)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="agent_configuration.html" class="btn btn-neutral float-left" title="Agent configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright © DataRobot, Inc. 2019. All Rights Reserved..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

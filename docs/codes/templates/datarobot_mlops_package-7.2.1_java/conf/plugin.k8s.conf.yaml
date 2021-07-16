@@ -1,0 +1,65 @@
+## The following settings are related to connecting to your Kubernetes cluster
+#
+# The name of the kube-config context to use (similar to --context argument of kubectl). There is a sepcial
+# `IN_CLUSTER` string to be used if you are running the plugin inside a cluster itself. The default is "IN_CLUSTER"
+# kubeConfigContext: IN_CLUSTER
+
+# The namespace that you want to create and mange external deployments (similar to --namespace argument of kubectl). You
+# can leave as `null` to either use the "default" namespace, the namespace defined in your context, or if running IN_CLUSTER
+# we will default to managing resources in the same namespace this plugin is executing in.
+# kubeNamespace:
+
+
+
+## The following settings are related to MLOps monitoring or not
+#
+# We need to know the location of the dockerized agent image that can be launched into your Kubernetes cluster.
+# You can build the image by running `make build` in the tools/agent_docker/ directory and retagging the image
+# and pushing to your registry.
+# agentImage: "<FILL-IN-DOCKER-REGISTRY>/mlops-tracking-agent:latest"
+
+
+
+## The following settings are all related to accessing the model from outside the Kubernetes cluster
+#
+# The URL prefix used to access the deployed model, i.e. https://example.com/deployments/
+# The model will be accessible via <outfacingPredictionURLPrefix/<model_id>/predict
+outfacingPredictionURLPrefix: "<FILL-CORRECT-URL-FOR-K8S-INGRESS>"
+
+# We are still using the beta Ingress resource API so a class must be provided. If your cluster
+# doesn't have a default ingress class, please provide one.
+# ingressClass:
+
+
+
+## The following settings are all related to building the finalized model image (base image + mlpkg)
+#
+# The location of the Portable Prediction Server base image. You can download it from DataRobot's developer
+# tools section, retag it and push it to your registry.
+ppsBaseImage: "<FILL-IN-DOCKER-REGISTRY>/datarobot-portable-prediction-api:latest"
+
+# The docker repo that this plugin can use to push finalized models to. The built images will be tagged
+# as follows: <generatedImageRepo>:m-<model_pkg_id>
+generatedImageRepo: "<FILL-IN-DOCKER-REGISTRY>/mlops-model"
+
+# We use Kaniko to build our finalized image.
+# You can learn more here: https://github.com/GoogleContainerTools/kaniko#readme
+# The default is to use the image below.
+# kanikoImage: "gcr.io/kaniko-project/executor:v1.5.2"
+
+# The name of the Kaniko ConfigMap it can use which provides the settings it will need to be able to
+# push to your registry type.
+# See https://github.com/GoogleContainerTools/kaniko#pushing-to-different-registries
+# The default is to not use any additional configuration.
+# kanikoConfigmapName: "docker-config"
+
+# The name of the Kaniko Secret it can use which provides the settings it will need to be able to
+# push to your registry type.
+# See https://github.com/GoogleContainerTools/kaniko#pushing-to-different-registries
+# The default is to not use any additional secrets. The secret must be of the type: kubernetes.io/dockerconfigjson
+# kanikoSecretName: "registry-credentials"
+
+# The name of a service account to use for running Kaniko if you want to run it in a more secure fashion.
+# https://github.com/GoogleContainerTools/kaniko#security
+# The default is to use the "default" service account in the namespace the pod runs in.
+# kanikoServiceAccount: default

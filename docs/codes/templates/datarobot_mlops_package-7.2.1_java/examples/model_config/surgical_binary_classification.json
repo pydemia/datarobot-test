@@ -1,0 +1,14 @@
+{
+    "name": "MLOps Example Surgical Model",
+    "modelDescription": {
+        "modelName": "Binary Model for Surgical Complications",
+        "description": "Binary classification on surgical dataset",
+        "location": "/tmp/myModel"
+    },
+    "target": {
+        "type": "Binary",
+        "name": "complication",
+        "classNames": ["1","0"],
+        "predictionThreshold": 0.5
+    }
+}

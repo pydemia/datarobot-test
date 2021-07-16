@@ -1,0 +1,13 @@
+Agent
+=====
+
+The MLOps agent forwards buffered messages from the MLOps library to DataRobot MLOps.
+
+When the agent is running, it will look for buffered messages in a the configured directory or
+message queuing system and
+forward them to the designated DataRobot MLOps. You will need to install and configure the agent as
+indicated below:
+
+.. toctree::
+   agent_installation.rst
+   agent_configuration.rst

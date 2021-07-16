@@ -1,0 +1,13 @@
+Agent configuration
+===================
+
+Edit the agent configuration file, `conf/mlops.agent.conf.yaml`.
+You must update the values for `mlopsUrl` and `apiToken`.
+
+By default, the agent will use the file system channel.
+If you use the file system channel, make sure you create the spooler directory (by default this is `/tmp/ta`).
+If you want to use a different channel, update the agent configuration file following the comments in the file.
+
+.. _agent-configuration:
+
+.. literalinclude:: ../../build/mlops-agent-tarball/conf/mlops.agent.conf.yaml

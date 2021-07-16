@@ -1,0 +1,27 @@
+Examples
+========
+
+The `examples` directory contains both sample code (code snippets for manual inspection) and example code (self-contained
+examples that can be run) for several languages and use cases.
+
+Examples include model configuration, data, and scripts to create deployments and run the examples. For our examples,
+we create the model packages and deployments programmatically rather than through the UI. All examples use Python to
+programmatically create the model package and deployment. So you must install the Python version of the MLOps library
+(as described here).
+
+To run the Python examples, you need to install other dependencies used by the examples:
+`pip install -r examples/python/requirements.txt`
+
+To run an example:
+
+#. First initialize the model package and deployment by running:
+   `create_deployment.sh`
+
+#. Set the environment variables for the deployment and the model returned from creating the deployment
+   by copy/pasting them into your shell:
+   `export MLOPS_DEPLOYMENT_ID=<deployment_id>; export MLOPS_MODEL_ID=<model_id>`
+
+#. Generate predictions and report statistics to MLOps by running:
+   `run_example.sh`
+
+

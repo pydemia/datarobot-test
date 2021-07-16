@@ -1,0 +1,12 @@
+{
+        "name": "MLOps Example Replacement Iris classifier",
+        "modelDescription": {
+            "modelName": "Updated iris model",
+            "description": "Simulated new classifier on iris dataset, for model replace"
+        },
+        "target": {
+            "type": "Multiclass",
+            "name": "Species",
+            "classNames": ["Iris-versicolor", "Iris-virginica", "Iris-setosa"]
+        }
+}

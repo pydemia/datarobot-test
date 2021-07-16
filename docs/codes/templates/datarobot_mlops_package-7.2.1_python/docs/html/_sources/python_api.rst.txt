@@ -1,0 +1,29 @@
+:orphan:
+
+.. _python_classes:
+
+MLOps
+=====
+
+Methods
+-------
+
+.. py:currentmodule:: datarobot.mlops.common.enums
+
+.. autoclass:: OutputType
+   :members:
+   :undoc-members:
+   :member-order: bysource
+
+.. py:currentmodule:: datarobot.mlops.mlops
+
+.. autoclass:: MLOps
+   :members: init, shutdown,
+     set_deployment_id, set_model_id,
+     set_async_reporting, set_feature_data_rows_in_one_message,
+     set_stdout_spooler, set_filesystem_spooler, set_pubsub_spooler, set_sqs_spooler,
+     set_rabbitmq_spooler, set_channel_config, agent,
+     report_deployment_stats, report_predictions_data
+
+   :member-order: bysource
+

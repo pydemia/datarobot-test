@@ -1,0 +1,59 @@
+# Example config overlay for GCP. You can copy and update it for your
+# environment and then use the `--values <filename>` to overlay them with
+# the default values.
+#
+# To provide push credentials to our image builder service, we are going to utilize `Workload Identity`.
+# You can read the full documentation at:
+#   https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+# but one method to be sure your cluster is ready to use it is to run the following commands:
+#   gcloud container clusters update <CLUSTER-NAME> \
+#     --workload-pool=<PROJECT-NAME>.svc.id.goog
+#
+#   gcloud container node-pools update <NODE-POOL-NAME> \     
+#     --cluster=<CLUSTER-NAME> \                                               
+#     --workload-metadata=GKE_METADATA
+
+datarobot:
+  # You must create this secret via:
+  #   kubectl -n <NAMESPACE> create secret generic mlops-api-key --from-literal=secret=<YOUR-API-TOKEN>
+  apiSecretName: mlops-api-key
+  predictionEnvId: <PREDICTION-ENV-ID>
+  url: https://app.datarobot.com
+
+bosun:
+  repository: gcr.io/<PROJECT-NAME>/datarobot/mlops-management-agent
+
+tracking:
+  enabled: true
+  image: gcr.io/<PROJECT-NAME>/datarobot/mlops-tracking-agent:latest
+
+imageBuilder:
+  ppsImage: gcr.io/<PROJECT-NAME>/datarobot/datarobot-portable-prediction-api:7.1.0-r436
+  generatedImageRepository: gcr.io/<PROJECT-NAME>/mlops/frozen-models
+
+  # Below will create a ServiceAccount in GKE but you **also** need to create a Service Account
+  # in GCloud IAM, give it push access to GCR and link everything together. :
+  #
+  # Create Service Account
+  #   gcloud iam service-accounts create gcr-push-user
+  #
+  # Give user push access to GCR
+  #   gcloud projects add-iam-policy-binding <PROJECT-NAME> \
+  #     --member=serviceAccount:[gcr-push-user]@<PROJECT-NAME>.iam.gserviceaccount.com \
+  #     --role=roles/cloudbuild.builds.builder
+  #
+  # Link GKE ServiceAccount with the IAM Service Account
+  #   gcloud iam service-accounts add-iam-policy-binding \   
+  #     --role roles/iam.workloadIdentityUser \
+  #     --member "serviceAccount:<PROJECT-NAME>.svc.id.goog[<NAMESPACE>/datarobot-management-agent-image-builder]" \
+  #     gcr-push-user@<PROJECT-NAME>.iam.gserviceaccount.com
+  serviceAccount:
+    create: true
+    annotations: {
+      iam.gke.io/gcp-service-account: gcr-push-user@<PROJECT-NAME>.iam.gserviceaccount.com
+    }
+    name: datarobot-management-agent-image-builder
+
+ingress:
+  outfacingURLPrefix: http://<EXTERNAL-IP>/deployments/
+  className: mlops

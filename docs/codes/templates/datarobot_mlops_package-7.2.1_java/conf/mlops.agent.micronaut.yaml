@@ -1,0 +1,18 @@
+micronaut:
+  application:
+    name: myapp
+  router:
+    static-resources:
+#     The actual path for static resources are configured in runtime by the
+#     start-agent.sh script using the JVM option.
+      default:
+        enabled: true
+        mapping: "/**"
+        # -Dmicronaut.router.static-resources.default.paths=file:/path/to/ui/build` is equivalent to:
+        # paths: file:path/to/ui/build
+      docs:
+        enabled: true
+        mapping: "/docs/**"
+        # -Dmicronaut.router.static-resources.docs.paths=file:/path/to/docs/html` is equivalent to:
+  #     paths: file:/path/to/docs/html
+

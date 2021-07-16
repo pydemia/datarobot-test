@@ -1,0 +1,1124 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>MLOps &mdash; DataRobot MLOps Agent DEV documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'DEV',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="MLOpsSparkUtils" href="java_spark_api.html" />
+    <link rel="prev" title="Installation" href="java_installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> DataRobot MLOps Agent
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                DEV
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create_deployment.html">Monitoring Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agent.html">Agent</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="mlops_lib.html">MLOps Library</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mlops_client.html">MLOps Client (7.2.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlops_python.html">MLOps Python library (7.2.1)</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="mlops_java.html">MLOps Java library (7.2.1)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="java_installation.html">Installation</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">MLOps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="java_spark_api.html">MLOpsSparkUtils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="java_examples.html">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spooler_configuration.html">Spooler Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment_vars.html">Environment Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DataRobot MLOps Agent</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="mlops_lib.html">MLOps Library</a> &raquo;</li>
+        
+          <li><a href="mlops_java.html">MLOps Java library (7.2.1)</a> &raquo;</li>
+        
+      <li>MLOps</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/java_api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mlops">
+<h1>MLOps<a class="headerlink" href="#mlops" title="Permalink to this headline">¶</a></h1>
+<dl class="type">
+<dt id="com.datarobot.mlops.MLOps">
+public class <code class="descname">MLOps</code><a class="headerlink" href="#com.datarobot.mlops.MLOps" title="Permalink to this definition">¶</a></dt>
+<dd><p>MLOps library provides metric reporting from external deployments to DataRobot MLOps.</p>
+</dd></dl>
+
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="agent">
+<h3>agent<a class="headerlink" href="#agent" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.agent(String, String)">
+public <a class="reference internal" href="#com.datarobot.mlops.MLOps" title="com.datarobot.mlops.MLOps">MLOps</a> <code class="descname">agent</code><span class="sig-paren">(</span><a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> mlopsServiceUrl</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> mlopsApiToken</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.agent(String, String)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start the Agent as part of this process. The Agent will be stopped with MLOps shutdown. Note this should only be called by the MLOps library.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>mlopsServiceUrl</strong> – URL of DataRobot MLOps</li>
+<li><strong>mlopsApiToken</strong> – API token for DataRobot MLOps</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRCommonException</strong> – if the Agent is not packaged with this SDK or not correctly configured.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a reference to this object</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="agentisavailable">
+<h3>agentIsAvailable<a class="headerlink" href="#agentisavailable" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.agentIsAvailable()">
+public static <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html" title="java.lang.Boolean">Boolean</a> <code class="descname">agentIsAvailable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.agentIsAvailable()" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine whether the Agent is packaged with this SDK</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">true if Agent is packaged with this SDK</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="getactualmap">
+<h3>getActualMap<a class="headerlink" href="#getactualmap" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.getActualMap(String, Object, Boolean, String)">
+public static Map&lt;<a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html" title="java.lang.Object">Object</a>&gt; <code class="descname">getActualMap</code><span class="sig-paren">(</span><a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> associationId</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html" title="java.lang.Object">Object</a><em> value</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html" title="java.lang.Boolean">Boolean</a><em> actOn</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> timeStamp</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.getActualMap(String, Object, Boolean, String)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convenience function for generating a map of actuals data that can be reported</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>associationId</strong> – the association ID matches this actuals data to the prediction</li>
+<li><strong>value</strong> – value of the actuals data</li>
+<li><strong>actOn</strong> – whether the prediction was acted upon</li>
+<li><strong>timeStamp</strong> – timestamp</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a map containing the provided parameters</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="getconfig">
+<h3>getConfig<a class="headerlink" href="#getconfig" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.getConfig(String)">
+public <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a> <code class="descname">getConfig</code><span class="sig-paren">(</span><a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> key</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.getConfig(String)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the configuration value of a particular configuration key.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> – the name of the configuration field</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRVarNotFound</strong> – if a config variable provided is not known or its value is not set.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the value of the configuration value as a string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="getinstance">
+<h3>getInstance<a class="headerlink" href="#getinstance" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.getInstance()">
+public static <a class="reference internal" href="#com.datarobot.mlops.MLOps" title="com.datarobot.mlops.MLOps">MLOps</a> <code class="descname">getInstance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.getInstance()" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a singleton handler of MLOps library.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">mlops singleton handler.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="init">
+<h3>init<a class="headerlink" href="#init" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.init()">
+public <a class="reference internal" href="#com.datarobot.mlops.MLOps" title="com.datarobot.mlops.MLOps">MLOps</a> <code class="descname">init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.init()" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finalize instantiation of MLOps singleton handler.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRCommonException</strong> – when MLOps initializations fail due to invalid configuration</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a reference to this object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="reportactuals">
+<h3>reportActuals<a class="headerlink" href="#reportactuals" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.reportActuals(List)">
+public boolean <code class="descname">reportActuals</code><span class="sig-paren">(</span>List&lt;Map&lt;<a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html" title="java.lang.Object">Object</a>&gt;&gt;<em> actualsList</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.reportActuals(List)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report actuals/outcomes of predictions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>actualsList</strong> – A list of tuples in the following format String - association Id - the id of the prediction this outcome refers to Object - the outcome - if regression then a float/double if classification then String Boolean - act upon - whehther an action was taken String - timestamp</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRCommonException</strong> – when submission of reported actuals for the model fails</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">report status - True on success, False otherwise</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="reportactualstuples">
+<h3>reportActualsTuples<a class="headerlink" href="#reportactualstuples" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.reportActualsTuples(List)">
+public boolean <code class="descname">reportActualsTuples</code><span class="sig-paren">(</span>List&lt;Quartet&lt;<a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html" title="java.lang.Object">Object</a>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html" title="java.lang.Boolean">Boolean</a>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a>&gt;&gt;<em> actualsList</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.reportActualsTuples(List)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report actuals/outcomes of predictions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>actualsList</strong> – A list of tuples in the following format String - association Id - the id of the prediction this outcome refers to Object - the outcome - if regression then a float/double if classification then String Boolean - act upon - whehther an action was taken String - timestamp</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRCommonException</strong> – when submission of reported actuals for the model fails</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">report status - True on success, False otherwise</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="reportclassificationpredictionssc">
+<h3>reportClassificationPredictionsSc<a class="headerlink" href="#reportclassificationpredictionssc" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.reportClassificationPredictionsSc(Map, Map)">
+public void <code class="descname">reportClassificationPredictionsSc</code><span class="sig-paren">(</span>Map&lt;<a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a>, ?&gt;<em> featureData</em>, Map&lt;<a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/Double.html" title="java.lang.Double">Double</a>&gt;<em> predictions</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.reportClassificationPredictionsSc(Map, Map)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report a single classification prediction to DataRobot MLOps. It is used by ‘scoring-code’ library</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>featureData</strong> – prediction sample, which is a map between feature to the sample value</li>
+<li><strong>predictions</strong> – predictions, which is a map between a class to its probability</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first last simple">
+<li><strong>DRCommonException</strong> – when submission of reported single classification prediction fails on the IOChannel</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="reportdeploymentstats">
+<h3>reportDeploymentStats<a class="headerlink" href="#reportdeploymentstats" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.reportDeploymentStats(String, String, long, double)">
+public boolean <code class="descname">reportDeploymentStats</code><span class="sig-paren">(</span><a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> deploymentId</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> modelId</em>, long<em> numPredictions</em>, double<em> predictionTimeMs</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.reportDeploymentStats(String, String, long, double)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report general deployment statistics to DataRobot MLOps.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>deploymentId</strong> – the deployment being monitored</li>
+<li><strong>modelId</strong> – the model being monitored</li>
+<li><strong>numPredictions</strong> – the number of predictions that were produced for this deployment</li>
+<li><strong>predictionTimeMs</strong> – the time in milliseconds that took to produce the given predictions</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRCommonException</strong> – when submission of reported deployment statistics fails on the IOChannel</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">report status - True on success, False otherwise.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="id1">
+<h3>reportDeploymentStats<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.reportDeploymentStats(long, double)">
+public boolean <code class="descname">reportDeploymentStats</code><span class="sig-paren">(</span>long<em> numPredictions</em>, double<em> predictionTimeMs</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.reportDeploymentStats(long, double)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report general deployment statistics to DataRobot MLOps.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>numPredictions</strong> – the number of predictions that were produced for this deployment</li>
+<li><strong>predictionTimeMs</strong> – the time in milliseconds that took to produce the given predictions</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRCommonException</strong> – when submission of reported deployment statistics fails on the IOChannel</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">report status - True on success, False otherwise.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="reportpredictionsdata">
+<h3>reportPredictionsData<a class="headerlink" href="#reportpredictionsdata" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.reportPredictionsData(String, String, Map, List, List, List)">
+public boolean <code class="descname">reportPredictionsData</code><span class="sig-paren">(</span><a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> deploymentId</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> modelId</em>, Map&lt;<a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a>, List&lt;<a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html" title="java.lang.Object">Object</a>&gt;&gt;<em> featureData</em>, List&lt;?&gt;<em> predictions</em>, List&lt;<a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a>&gt;<em> associationIds</em>, List&lt;<a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a>&gt;<em> classNames</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.reportPredictionsData(String, String, Map, List, List, List)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report features and predictions with association ids and class names to DataRobot MLOps for tracking and monitoring.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>deploymentId</strong> – the deployment being monitored</li>
+<li><strong>modelId</strong> – the model being monitored</li>
+<li><strong>featureData:</strong> – Map of feature name: list of values containing features to track and monitor. All the features in the map are reported. Omit the features from the map that do not need reporting.</li>
+<li><strong>predictions:</strong> – List of predictions. For a Regression deployments, this is 1D list containing prediction values. For a Classification deployment, this is a 2D list, in which the inner list is the list of probabilities for each class type Regression Predictions: e.g. [1, 2, 4, 3, 2] Binary Classification: e.g. [[0.2, 0.8], [0.3, 0.7]].</li>
+<li><strong>associationIds:</strong> – an optional list of association IDs corresponding to each prediction. Used for accuracy calculations. Association IDs have to be unique for each prediction to report. Number of <cite>predictions</cite> should be equal to number of <cite>associationIds</cite> in the list</li>
+<li><strong>classNames</strong> – names of predicted classes, e.g. [“class1”, “class2”, “class3”]. For a classification deployment, class names are defined during deployment creation. This field allows user to decide its own order for his/her convenience and is associated correctly by DataRobot MLOps. This argument is ignored for the Regression deployment. At least one of <cite>features</cite> or <cite>predictions</cite> should be specified.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRCommonException</strong> – when submission of reported features and predictions for the model fails</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">report status - True on success, False otherwise.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="id2">
+<h3>reportPredictionsData<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.reportPredictionsData(Map, List, List, List)">
+public boolean <code class="descname">reportPredictionsData</code><span class="sig-paren">(</span>Map&lt;<a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a>, List&lt;<a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html" title="java.lang.Object">Object</a>&gt;&gt;<em> featureData</em>, List&lt;?&gt;<em> predictions</em>, List&lt;<a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a>&gt;<em> associationIds</em>, List&lt;<a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a>&gt;<em> classNames</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.reportPredictionsData(Map, List, List, List)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report features and predictions with association ids and class names to DataRobot MLOps for tracking and monitoring.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>featureData:</strong> – Map of feature name: list of values containing features to track and monitor. All the features in the map are reported. Omit the features from the map that do not need reporting.</li>
+<li><strong>predictions:</strong> – List of predictions. For a Regression deployments, this is 1D list containing prediction values. For a Classification deployment, this is a 2D list, in which the inner list is the list of probabilities for each class type Regression Predictions: e.g. [1, 2, 4, 3, 2] Binary Classification: e.g. [[0.2, 0.8], [0.3, 0.7]].</li>
+<li><strong>associationIds:</strong> – an optional list of association IDs corresponding to each prediction. Used for accuracy calculations. Association IDs have to be unique for each prediction to report. Number of <cite>predictions</cite> should be equal to number of <cite>associationIds</cite> in the list</li>
+<li><strong>classNames</strong> – names of predicted classes, e.g. [“class1”, “class2”, “class3”]. For a classification deployment, class names are defined during deployment creation. This field allows user to decide its own order for his/her convenience and is associated correctly by DataRobot MLOps. This argument is ignored for the Regression deployment. At least one of <cite>features</cite> or <cite>predictions</cite> should be specified.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRCommonException</strong> – when submission of reported features and predictions for the model fails</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">report status - True on success, False otherwise.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="id3">
+<h3>reportPredictionsData<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.reportPredictionsData(Map, List)">
+public boolean <code class="descname">reportPredictionsData</code><span class="sig-paren">(</span>Map&lt;<a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a>, List&lt;<a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html" title="java.lang.Object">Object</a>&gt;&gt;<em> featureData</em>, List&lt;?&gt;<em> predictions</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.reportPredictionsData(Map, List)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report features and predictions to DataRobot MLOps for tracking and monitoring.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>featureData:</strong> – Map of feature name: list of values containing features to track and monitor. All the features in the map are reported. Omit the features from the map that do not need reporting.</li>
+<li><strong>predictions:</strong> – List of predictions. For a Regression deployments, this is 1D list containing prediction values. For a Classification deployment, this is a 2D list, in which the inner list is the list of probabilities for each class type Regression Predictions: e.g. [1, 2, 4, 3, 2] Binary Classification: e.g. [[0.2, 0.8], [0.3, 0.7]]. At least one of <cite>features</cite> or <cite>predictions</cite> should be specified.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRCommonException</strong> – when submission of reported features and predictions for the model fails</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">report status - True on success, False otherwise.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="reportpredictionsdatalist">
+<h3>reportPredictionsDataList<a class="headerlink" href="#reportpredictionsdatalist" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.reportPredictionsDataList(List, List)">
+public boolean <code class="descname">reportPredictionsDataList</code><span class="sig-paren">(</span>List&lt;Map&lt;<a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html" title="java.lang.Object">Object</a>&gt;&gt;<em> featureData</em>, List&lt;?&gt;<em> predictions</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.reportPredictionsDataList(List, List)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report features and predictions to DataRobot MLOps for tracking and monitoring.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>featureData:</strong> – List of maps where each map is a feature to value mapping All the features in the map are reported. Omit the features from the map that do not need reporting.</li>
+<li><strong>predictions:</strong> – List of predictions. For a Regression deployments, this is 1D list containing prediction values. For a Classification deployment, this is a 2D list, in which the inner list is the list of probabilities for each class type Regression Predictions: e.g. [1, 2, 4, 3, 2] Binary Classification: e.g. [[0.2, 0.8], [0.3, 0.7]]. At least one of <cite>features</cite> or <cite>predictions</cite> should be specified.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRCommonException</strong> – when submission of reported features and predictions for the model fails</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">report status - True on success, False otherwise.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="id4">
+<h3>reportPredictionsDataList<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.reportPredictionsDataList(List, List, List, List)">
+public boolean <code class="descname">reportPredictionsDataList</code><span class="sig-paren">(</span>List&lt;Map&lt;<a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html" title="java.lang.Object">Object</a>&gt;&gt;<em> featureData</em>, List&lt;?&gt;<em> predictions</em>, List&lt;<a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a>&gt;<em> associationIds</em>, List&lt;<a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a>&gt;<em> classNames</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.reportPredictionsDataList(List, List, List, List)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report features and predictions to DataRobot MLOps for tracking and monitoring.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>featureData:</strong> – List of maps where each map is a feature to value mapping All the features in the map are reported. Omit the features from the map that do not need reporting.</li>
+<li><strong>predictions:</strong> – List of predictions. For a Regression deployments, this is 1D list containing prediction values. For a Classification deployment, this is a 2D list, in which the inner list is the list of probabilities for each class type Regression Predictions: e.g. [1, 2, 4, 3, 2] Binary Classification: e.g. [[0.2, 0.8], [0.3, 0.7]].</li>
+<li><strong>associationIds:</strong> – an optional list of association IDs corresponding to each prediction. Used for accuracy calculations. Association IDs have to be unique for each prediction to report. Number of <cite>predictions</cite> should be equal to number of <cite>associationIds</cite> in the list</li>
+<li><strong>classNames</strong> – names of predicted classes, e.g. [“class1”, “class2”, “class3”]. For a classification deployment, class names are defined during deployment creation. This field allows user to decide its own order for his/her convenience and is associated correctly by DataRobot MLOps. This argument is ignored for the Regression deployment. At least one of <cite>features</cite> or <cite>predictions</cite> should be specified.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRCommonException</strong> – when submission of reported features and predictions for the model fails</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">report status - True on success, False otherwise.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="reportregressionpredictionsc">
+<h3>reportRegressionPredictionSc<a class="headerlink" href="#reportregressionpredictionsc" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.reportRegressionPredictionSc(Map, double)">
+public void <code class="descname">reportRegressionPredictionSc</code><span class="sig-paren">(</span>Map&lt;<a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a>, ?&gt;<em> featureData</em>, double<em> prediction</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.reportRegressionPredictionSc(Map, double)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report a single regression prediction to DataRobot MLOps. It is used by the ‘scoring-code’ library.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>featureData</strong> – prediction sample, which is a map between feature to the sample value</li>
+<li><strong>prediction</strong> – the prediction for the given feature data sample</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first last simple">
+<li><strong>DRCommonException</strong> – when submission of reported regression predictions fails on the IOChannel</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="setasyncreporting">
+<h3>setAsyncReporting<a class="headerlink" href="#setasyncreporting" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.setAsyncReporting()">
+public <a class="reference internal" href="#com.datarobot.mlops.MLOps" title="com.datarobot.mlops.MLOps">MLOps</a> <code class="descname">setAsyncReporting</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.setAsyncReporting()" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set async reporting.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">MLOps object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="setchannelconfig">
+<h3>setChannelConfig<a class="headerlink" href="#setchannelconfig" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.setChannelConfig(String)">
+public <a class="reference internal" href="#com.datarobot.mlops.MLOps" title="com.datarobot.mlops.MLOps">MLOps</a> <code class="descname">setChannelConfig</code><span class="sig-paren">(</span><a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> channelConfig</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.setChannelConfig(String)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure the output channel to use given a single string configuration. The string can contain multiple configuration items separated by semicolon. Example: “spooler_type=FILESYSTEM;path=/tmp/spool_1;max_files=3;file_max_size=10000 First split the setting into key=value params then iterate over them setting the correct config key and value The config item names are the same as the environment variables used to configure the MLOps object. Note that config item names are case insensitive (e.g. SPOOLER_TYPE and spooler_type are valid)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>channelConfig</strong> – a string containing the channel config</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRApiException</strong> – for invalid channelConfig strings</li>
+<li><strong>DRVarNotFound</strong> – if a config variable provided is not known</li>
+<li><strong>DRInvalidValue</strong> – if the value provided to a config variable is not valid (e.g. provide integer to a variable expecting string).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a reference to this object</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="setconfig">
+<h3>setConfig<a class="headerlink" href="#setconfig" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.setConfig(String, String)">
+public <a class="reference internal" href="#com.datarobot.mlops.MLOps" title="com.datarobot.mlops.MLOps">MLOps</a> <code class="descname">setConfig</code><span class="sig-paren">(</span><a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> key</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> value</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.setConfig(String, String)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure a particular configuration value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> – the name of the configuration field</li>
+<li><strong>value</strong> – the value for the configuration field</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRApiException</strong> – for empty value strings</li>
+<li><strong>DRVarNotFound</strong> – if a config variable provided is not known</li>
+<li><strong>DRInvalidValue</strong> – if the value provided to a config variable is not valid (e.g. provide integer to a variable expecting string).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a reference to this object</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="setdeploymentid">
+<h3>setDeploymentId<a class="headerlink" href="#setdeploymentid" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.setDeploymentId(String)">
+public <a class="reference internal" href="#com.datarobot.mlops.MLOps" title="com.datarobot.mlops.MLOps">MLOps</a> <code class="descname">setDeploymentId</code><span class="sig-paren">(</span><a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> deploymentId</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.setDeploymentId(String)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set ID of the deployment where library reports to.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>deploymentId</strong> – string ID of the deployment.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRApiException</strong> – if DeploymentId is empty or malformed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a reference to this object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="setfeaturedatarowsinonemessage">
+<h3>setFeatureDataRowsInOneMessage<a class="headerlink" href="#setfeaturedatarowsinonemessage" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.setFeatureDataRowsInOneMessage(int)">
+public <a class="reference internal" href="#com.datarobot.mlops.MLOps" title="com.datarobot.mlops.MLOps">MLOps</a> <code class="descname">setFeatureDataRowsInOneMessage</code><span class="sig-paren">(</span>int<em> featureDataRowsInOneMessage</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.setFeatureDataRowsInOneMessage(int)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set how many feature data rows will be in one message. Use for channels which have size limit for each message.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>featureDataRowsInOneMessage</strong> – how many feature data rows will be in one message</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRApiException</strong> – for invalid parameter</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a reference to this object</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="setfilesystemspooler">
+<h3>setFilesystemSpooler<a class="headerlink" href="#setfilesystemspooler" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.setFilesystemSpooler(String)">
+public <a class="reference internal" href="#com.datarobot.mlops.MLOps" title="com.datarobot.mlops.MLOps">MLOps</a> <code class="descname">setFilesystemSpooler</code><span class="sig-paren">(</span><a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> directory</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.setFilesystemSpooler(String)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the spooler type to ‘FILESYSTEM’.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>directory</strong> – The output directory path at which the generated files will be placed.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRApiException</strong> – for invalid arguments</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a reference to this object</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="setkafkaspooler">
+<h3>setKafkaSpooler<a class="headerlink" href="#setkafkaspooler" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.setKafkaSpooler(String)">
+public <a class="reference internal" href="#com.datarobot.mlops.MLOps" title="com.datarobot.mlops.MLOps">MLOps</a> <code class="descname">setKafkaSpooler</code><span class="sig-paren">(</span><a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> topicName</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.setKafkaSpooler(String)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the spooler type to ‘KAFKA’. Kafka configuration is required at the /${home_dir}/.datarobot-mlops/kafka.conf A minimal configuration should contain the “bootstrap.servers” property.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>topicName</strong> – the Kafka topic name.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRApiException</strong> – for invalid configuration</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a reference to this object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="id5">
+<h3>setKafkaSpooler<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.setKafkaSpooler(String, String)">
+public <a class="reference internal" href="#com.datarobot.mlops.MLOps" title="com.datarobot.mlops.MLOps">MLOps</a> <code class="descname">setKafkaSpooler</code><span class="sig-paren">(</span><a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> topicName</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> bootstrapServers</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.setKafkaSpooler(String, String)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the spooler type to ‘KAFKA’.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>topicName</strong> – the Kafka topic name.</li>
+<li><strong>bootstrapServers</strong> – a ‘host[:port]’ string (or list of ‘host[:port]’ strings) that the consumer should contact to bootstrap initial cluster metadata.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRApiException</strong> – for invalid configuration</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a reference to this object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="setmodelid">
+<h3>setModelId<a class="headerlink" href="#setmodelid" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.setModelId(String)">
+public <a class="reference internal" href="#com.datarobot.mlops.MLOps" title="com.datarobot.mlops.MLOps">MLOps</a> <code class="descname">setModelId</code><span class="sig-paren">(</span><a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> modelId</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.setModelId(String)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set ID of the model which is currently in use.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>modelId</strong> – string ID of the model in use.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRApiException</strong> – if ModelId is empty or malformed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a reference to this object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="setnospooler">
+<h3>setNoSpooler<a class="headerlink" href="#setnospooler" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.setNoSpooler()">
+public <a class="reference internal" href="#com.datarobot.mlops.MLOps" title="com.datarobot.mlops.MLOps">MLOps</a> <code class="descname">setNoSpooler</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.setNoSpooler()" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the spooler type to ‘NONE’. Turns off MLOps reporting.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRApiException</strong> – if problem is encountered setting spooler type</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a reference to this object</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="setpubsubspooler">
+<h3>setPubsubSpooler<a class="headerlink" href="#setpubsubspooler" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.setPubsubSpooler(String, String)">
+public <a class="reference internal" href="#com.datarobot.mlops.MLOps" title="com.datarobot.mlops.MLOps">MLOps</a> <code class="descname">setPubsubSpooler</code><span class="sig-paren">(</span><a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> projectId</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> topicName</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.setPubsubSpooler(String, String)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the spooler type to ‘PUBSUB’.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>projectId</strong> – the full projectId</li>
+<li><strong>topicName</strong> – the topicName. This should be the topic name within the project, not the fully qualified topic name path that includes the project id.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRApiException</strong> – for invalid projectId value</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a reference to the MLOps object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="setrabbitmqspooler">
+<h3>setRabbitmqSpooler<a class="headerlink" href="#setrabbitmqspooler" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.setRabbitmqSpooler(String, String)">
+public <a class="reference internal" href="#com.datarobot.mlops.MLOps" title="com.datarobot.mlops.MLOps">MLOps</a> <code class="descname">setRabbitmqSpooler</code><span class="sig-paren">(</span><a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> queueUrl</em>, <a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> queueName</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.setRabbitmqSpooler(String, String)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the spooler type to ‘RABBITMQ’.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>queueUrl</strong> – the RabbitMQ queue URL.</li>
+<li><strong>queueName</strong> – the RabbitMQ queue name</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRApiException</strong> – for invalid queueName</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a reference to this object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="setsqsspooler">
+<h3>setSqsSpooler<a class="headerlink" href="#setsqsspooler" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.setSqsSpooler(String)">
+public <a class="reference internal" href="#com.datarobot.mlops.MLOps" title="com.datarobot.mlops.MLOps">MLOps</a> <code class="descname">setSqsSpooler</code><span class="sig-paren">(</span><a class="reference external" href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" title="java.lang.String">String</a><em> queue</em><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.setSqsSpooler(String)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the spooler type to ‘SQS’.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>queue</strong> – the AWS SQS queue name or queue URL. If the parameter begins with “http” is will be interpreted as the queue URL; otherwise, it will be interpreted as the queue name.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRApiException</strong> – for invalid configuration</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a reference to this object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="setstdoutspooler">
+<h3>setStdoutSpooler<a class="headerlink" href="#setstdoutspooler" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.setStdoutSpooler()">
+public <a class="reference internal" href="#com.datarobot.mlops.MLOps" title="com.datarobot.mlops.MLOps">MLOps</a> <code class="descname">setStdoutSpooler</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.setStdoutSpooler()" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the spooler type to ‘STDOUT’.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><ul class="first simple">
+<li><strong>DRApiException</strong> – if problem is encountered setting spooler type</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a reference to this object</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="setsyncreporting">
+<h3>setSyncReporting<a class="headerlink" href="#setsyncreporting" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.setSyncReporting()">
+public <a class="reference internal" href="#com.datarobot.mlops.MLOps" title="com.datarobot.mlops.MLOps">MLOps</a> <code class="descname">setSyncReporting</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.setSyncReporting()" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set sync reporting.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">MLOps object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="shutdown">
+<h3>shutdown<a class="headerlink" href="#shutdown" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="com.datarobot.mlops.MLOps.shutdown()">
+public void <code class="descname">shutdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#com.datarobot.mlops.MLOps.shutdown()" title="Permalink to this definition">¶</a></dt>
+<dd><p>Safe MLOps shutdown. Ensures that all metrics are processed and forwarded to the configured output.</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="java_spark_api.html" class="btn btn-neutral float-right" title="MLOpsSparkUtils" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="java_installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright © DataRobot, Inc. 2019. All Rights Reserved..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

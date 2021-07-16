@@ -1,0 +1,29 @@
+
+:orphan:
+
+.. _classes:
+
+MLOps Client ({mlops_python_version})
+=====================================
+
+The MLOps client is a library that can be used to interact directly with DataRobot MLOps. It can
+be used to create deployments, upload training datasets, and more.
+
+Because the MLOps client interacts with DataRobot MLOps, it must be run from an environment with
+connectivity to DataRobot MLOps.
+
+.. py:currentmodule:: datarobot.mlops.connected.enums
+
+.. autoclass:: DatasetSourceType
+   :members:
+   :undoc-members:
+   :member-order: bysource
+
+.. py:currentmodule:: datarobot.mlops.connected.client
+
+.. autoclass:: MLOpsClient
+   :members: upload_dataset, create_model_package, get_model_package,
+             deploy_model_package, replace_model_package,
+             get_model_id, set_scoring_dataset, submit_actuals
+
+   :member-order: bysource

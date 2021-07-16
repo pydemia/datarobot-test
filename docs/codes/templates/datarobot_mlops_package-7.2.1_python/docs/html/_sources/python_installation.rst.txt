@@ -1,0 +1,11 @@
+Installation
+============
+
+The Python version of the MLOps library is included in the TAR distribution at
+`datarobot_mlops_package-*/lib/datarobot_mlops-{mlops_python_version}-py2.py3-none-any.whl`.
+
+You can install it using pip:
+
+.. code-block:: python
+
+    pip install datarobot_mlops-{mlops_python_version}-py2.py3-none-any.whl
